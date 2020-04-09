@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../../static/js/vue/vue.js"></script>
+</head>
+<body>
+    <!-- 模板语法 -->
+
+    <div id="app">
+
+
+
+        <p>
+            <!-- 
+                v-on
+
+                    - 用于监听DOM事件
+
+                在这里参数是监听的事件名。我们也会更详细地讨论事件处理。
+
+                缩写： <a @click="doSomething">...</a>
+             -->
+
+             <a v-on:click="doSomething">...</a>
+            
+        </p>
+
+
+        <h3>监听事件</h3>
+
+        <p>
+            <!-- 可以用 v-on 指令监听 DOM 事件，并在触发时运行一些 JavaScript 代码。 -->
+            <div id="example-1">
+                <button v-on:click="counter += 1">Add 1</button>
+                <p>The button above has been clicked {{ counter }} times.</p>
+            </div>
+
+            <!-- `greet` 是在下面定义的方法名 -->
+            <button v-on:click="greet">Greet</button>
+
+            <!-- 
+                除了直接绑定到一个方法，也可以在内联 JavaScript 语句中调用方法：
+                $event 传入事件对象
+             -->
+            <button v-on:click="say('hi',$event)">Say hi</button>
+            <button v-on:click="say('what')">Say what</button>
+
+
+            <!-- 
+
+                事件修饰符：可以帮助快速解决一些事件默认值的设置
+                    
+                .stop  阻止冒泡
+                .prevent  阻止默认事件
+                .capture  捕获事件
+                .self  只是他自己产生
+                .once  用一次
+                .passive   提升移动端性能
+
+             -->
+        </p>
+
+        
+    </div>
+
+
+    <script>
+
+        // 创建一个vue实例
+        var app = new Vue({
+            
+            // 找到操作的元素
+            el: "#app",
+
+            // 数据对象
+            data: {
+                a: "123",
+                b: "<span v-html='rawHtml'></span>",
+                dynamicId: "id",
+
+                isButtonDisabled:true,
+                number: 3,
+                ok: true,
+                message: "Ren Dawei",
+
+                question: '',
+                answer: 'I cannot give you an answer until you ask a question!',
+
+
+                isActive: true,
+                hasError: false,
+
+                classObject: {
+                    active: true,
+                    'text-danger': false
+                },
+
+                activeClass: 'active',
+                errorClass: 'text-danger',
+
+                activeColor: 'red',
+                fontSize: 30,
+                styleObject: {
+                    color: 'red',
+                    fontSize: '13px'
+                },
+                baseStyles: {
+                    color: 'red',
+                    fontSize: '13px'
+                },
+                overridingStyles: {
+                    color: 'red',
+                    fontSize: '13px'
+                },
+                counter: 0
+            },
+
+            // 计算属性
+            computed: {
+                reversedMessage: function () {
+                    // `this` 指向 vm 实例
+                    return this.message.split('').reverse().join('')
+                },
+
+                classObject1: function () {
+                    return {
+                        active: this.isActive && !this.error,
+                        'text-danger': this.error && this.error.type === 'fatal'
+                    }
+                }
+
+            },
+
+            // 侦听器
+            watch: {
+                // 如果 `question` 发生改变，这个函数就会运行
+                question: function (newQuestion, oldQuestion) {
+                        this.answer = 'Waiting for you to stop typing...'
+                        // this.debouncedGetAnswer()
+                    }
+            },
+
+            methods: {
+                doSomething: function(){
+
+                },
+                greet: function (event) {
+                // `this` 在方法里指向当前 Vue 实例
+                    alert('Hello ' + this.a + '!')
+                    // `event` 是原生 DOM 事件
+                    if (event) {
+                        alert(event.target.tagName)
+                    }
+                },
+                say: function (message, event) {
+                    alert(message)
+                }
+            },
+
+            
+
+        })
+    </script>
+    
+</body>
+</html>

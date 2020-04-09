@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #img1{
+            height: 200px;
+        }
+
+    </style>
+
+    <script>
+        window.onload = function(){
+
+            /*
+            图片自动切换
+            
+            */ 
+
+            var img = document.getElementById("img1")
+
+            // 创建一个数组来保存图片的路径
+
+            var imgArr = [
+                "../static/img/1.png",
+                "../static/img/2.jpg",
+                "../static/img/3.png"
+            ]
+
+
+            // 创建一个变量来保存当前图片的索引
+
+            var index = 0;
+            var btn01 = document.getElementById("btn01")
+            var btn02 = document.getElementById("btn02")
+            var timer
+
+            btn01.onclick = function(){
+
+                // 开启一个定时器，来自动切换图片
+                // console.log(img)
+
+                /*
+                但是，问题来了，每点击一次就开启一个定时器，
+                然而关闭只能关闭最后一次，所以，我们再开启之前先关闭定时器
+                */
+                // 在开启定时器前先关闭定时器，关闭定时器函数可以传null所以不会报错
+                clearInterval(timer)
+
+                timer = setInterval(function(){
+                    // 使索引自增
+                    index++
+
+                    // 循环播放
+
+                    // if(index >= imgArr.length){
+                    //     index = 0;
+                    // }
+
+                    index = index % imgArr.length
+                    // 修改img1的src属性
+                    img1.src = imgArr[index]
+                }, 1000)
+            }
+
+            // 给暂停按钮绑定暂停功能
+            btn02.onclick = function(){
+                clearInterval(timer)
+            }
+        }
+    </script>
+</head>
+<body>
+    <img src="../static/img/1.png" alt="" id="img1">
+    <br>
+
+    <button id="btn01">开始</button>
+    <button id="btn02">暂停</button>
+</body>
+</html>

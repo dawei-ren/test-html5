@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        window.onload = function(){
+
+
+            /*
+            
+            要求点击哪个按钮，输出按钮的数字
+            
+            
+            */
+            
+
+            var btns = document.getElementsByTagName("button")
+
+            // 这种循环不行，因为点击的时候循环已经执行完毕
+
+            // for(var i=0; i<btns.length; i++){
+            //     var btn = btns[i]
+            //     btn.onclick = function(){
+            //         alert(i+1)
+            //     }
+            // }
+
+            // 这种循环是可以的，因为每循环一次，就将他的属性添加进去了
+
+            // for(var i=0; i<btns.length; i++){
+
+            //     btn = btns[i]
+            //     btn.index = i+1
+            //     btn.onclick = function(){
+            //         alert(this.index)
+            //     }
+            // }
+
+            // 闭包写法
+            for(var i=0; i<btns.length; i++){
+                (function (i){
+                    var btn = btns[i]
+                    btn.onclick = function(){
+                        alert(i+1)
+                    }
+                })(i)
+            }
+        }
+    </script>
+</head>
+<body>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+</body>
+</html>

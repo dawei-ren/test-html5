@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <!-- <script type="text/javascript" src="../../../../static/js/socket/socket.io.js"></script> -->
+    <!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I="></script> -->
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" ></script>
+    <script type="text/javascript">
+        window.onload = function(){
+                // 命名空间
+                var test_socket = io.connect('http://localhost:5000/test_conn')
+                
+                
+                // 发送消息
+                test_socket.emit('test message', "aaa");
+                
+    
+                test_socket.on('test', function(msg){
+                    console.log(msg)
+                });
+            }
+    </script>
+</head>
+<body>
+    <h1>test</h1>
+<h2 id="t"></h2>
+
+</body>
+</html>

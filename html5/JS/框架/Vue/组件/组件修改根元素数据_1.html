@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../../static/js/vue/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+
+        <ul>
+            <!-- 
+                从父元素传值给组件：
+                    - 组件定义的时候将变量名称定义给props；props:["product"],
+                    - 再标签中绑定  :product="product"
+
+
+                组件直接修改根元素的值：
+                    将跟组件的方法直接传给组件，组件可以直接调用
+                    
+             -->
+
+            <product-com 
+            v-for="product in products" 
+            :product="product"
+            :action="send"
+            ></product-com>
+            
+        </ul>
+        
+
+        <h3>选中的产品是：{{product_name}}</h3>
+        
+
+    </div>
+
+    <script>
+
+
+
+        Vue.component("product-com", {
+            props:["product","action"],
+            template: `
+            <li>
+                <h4>产品名称：{{ product.name }}</h4>
+                <h4>产品价格：{{ product.price }}</h4>
+                <button @click="choose(product.name)">选择</button>
+            </li>
+            `,
+            methods: {
+
+                // this.action实际上就是父元素传过来的send方法
+                choose: function(product_name){
+                    this.action(product_name)
+                }
+            },
+        })
+
+
+
+        var app = new Vue({
+            el: "#app",
+            data: {
+                products: [
+                    {name:"iphone", price:"6000"},
+                    {name:"ipad", price:"7000"},
+                    {name:"mac", price:"16000"},
+                ],
+
+                product_name: ""
+
+            },
+            methods: {
+                send:function(data){
+                    this.product_name = data
+                }
+            },
+
+        })
+    </script>
+    
+</body>
+</html>

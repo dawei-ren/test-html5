@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../../static/js/vue/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+
+        <ul>
+            <!-- 
+                从父元素传值给组件：
+                    - 组件定义的时候将变量名称定义给props；props:["product"],
+                    - 再标签中绑定  :product="product"
+
+
+                从子元素传递给父元素：
+                    - 组件触发的函数定义在组件中
+                    - 向父元素发送数据使用$emit
+                    - 在标签中绑定触发函数，绑定的名称为$emit定义的名称
+                    - 再在父元素中定义函数接受参数
+             -->
+
+            <product-com 
+            v-for="product in products" 
+            :product="product"
+            @send_name="send"
+            ></product-com>
+            
+        </ul>
+        
+
+        <h3>选中的产品是：{{product_name}}</h3>
+        
+
+    </div>
+
+    <script>
+
+
+
+        Vue.component("product-com", {
+            props:["product"],
+            template: `
+            <li>
+                <h4>产品名称：{{ product.name }}</h4>
+                <h4>产品价格：{{ product.price }}</h4>
+                <button @click="choose(product.name)">选择</button>
+            </li>
+            `,
+            methods: {
+                choose: function(product_name){
+                    // 想要将子元素的数据传递给父元素，需要自定义触发事件
+                    // 触发一个事件名称叫做send_name
+                    this.$emit("send_name", product_name)
+                }
+            },
+        })
+
+
+
+        var app = new Vue({
+            el: "#app",
+            data: {
+                products: [
+                    {name:"iphone", price:"6000"},
+                    {name:"ipad", price:"7000"},
+                    {name:"mac", price:"16000"},
+                ],
+
+                product_name: ""
+
+            },
+            methods: {
+                send:function(data){
+                    this.product_name = data
+                }
+            },
+
+        })
+    </script>
+    
+</body>
+</html>

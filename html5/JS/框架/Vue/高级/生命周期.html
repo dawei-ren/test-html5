@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../../static/js/vue/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>msg</h1>
+
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                msg: "hello Vue"
+            },
+            beforeCreate() {
+                // 此时数据和事件都还没有绑定到app上
+                console.log("beforeCreate")
+                console.log(this.msg)
+            },
+            // 绑定数据和方法到app上面，也就是初始化数据和方法
+            created() {
+                // 此时数据和方法已经初始化完成
+                console.log("created")
+            },
+            
+            beforeMount() {
+                // 将数据渲染到模板之前所作的操作，根据数据生成的dom对象是获取不到的
+                console.log("beforeMount")
+            },
+            mounted() {
+                // 将数据渲染到模板之后
+                console.log("mounted")
+            },
+
+            // 当多有的数据渲染完成之后，就可能会修改数据
+            beforeUpdate() {
+                // 修改数据之前
+                console.log("beforeUpate")
+            },
+
+            updated() {
+                // 修改数据之后
+                console.log("updated")
+            },
+            // 会后就会销毁应用实例
+            beforeDestroy() {
+                // 应用销毁之前
+                console.log("beforeDestroy")
+            },
+            destroyed() {
+                // 应用销毁之后
+                console.log("destroyed")
+            },
+        })
+    </script>
+</body>
+</html>

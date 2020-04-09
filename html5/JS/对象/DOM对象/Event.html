@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- 
+
+        我们可以在事件对应的属性中设置一些js代码，这样时间被触发时，这些代码将会执行 
+        但是这种写法成为结构和行为耦合，不方便维护，不推荐使用
+    -->
+
+    <!-- <button id="btn" onclick="alert('讨厌，你点我干嘛')">
+        我是一个按钮
+    </button> -->
+
+    <button id="btn">
+        我是一个按钮
+    </button>
+
+
+    <script>
+        /*
+        event对象
+
+        Event 对象代表事件的状态，
+            - 比如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态。
+            - 事件通常与函数结合使用，函数不会在事件发生前被执行！
+
+            - 当事件的响应函数被触发时，浏览器每次都会将一个事件对象作为实参传递进响应函数
+            - 在事件对象中封装了当前事件相关的一切信息，比如鼠标的坐标，键盘的按键，滚轮方向
+            - 在ie8以及一下的浏览器中，event对象作为window对象的属性保存的
+
+
+        取消默认事件：
+            - 如果想要浏览器取消默认的绑定事件，需要给绑定函数 return false
+            - 但是，通过addEventListener绑定的事件无法通过 return false 来取消默认事件
+            - 通过addEventListener绑定的事件需要通过event.preventDefault()来取消默认事件
+
+        事件句柄：  html对象.事件句柄
+
+            onclick：当用户点击某个对象时调用的事件
+            onload: 一张页面或一幅图像完成加载。
+                - 为window绑定onload事件，该事件对应的响应函数会在页面加载完成之后执行
+
+
+            onscroll
+                - 该事件会在元素滚动条滚动时触发
+
+            onmousemove
+                - 鼠标被移动。
+
+
+
+
+            onmousedown
+                - 鼠标按钮被按下。
+
+            onmousemove
+                - 鼠标被移动。
+
+            onmouseout
+                - 鼠标从某元素移开。
+
+            onmouseup
+                - 鼠标按键被松开。
+
+
+            onmousewheel
+                - 鼠标滚轮滚动事件，会在滚轮滚动时触发
+                - 火狐不支持该事件
+                - 再火狐中该事件需要通过DOMMouseScroll来绑定滚轮事件，并且该事件必须通过addEventListener函数来绑定
+
+            
+
+
+
+
+            addEventListener(event, function, useCapture) 
+                - 方法用于向指定元素添加事件句柄。
+                - element.addEventListener(event, function, useCapture) 
+                - 不支持ie8， 在ie8中可使用 attachEvent()
+                - 参数
+                    - event
+                        - 必须。字符串，指定事件名。
+                        - 不要使用 "on" 前缀。 例如，使用 "click" ,而不是使用 "onclick"
+                        - 所有 HTML DOM 事件，可以查看我们完整的 HTML DOM Event 对象参考手册。
+                    - function
+                        - 必须。指定要事件触发时执行的函数。
+                        - 当事件对象会作为第一个参数传入函数。 事件对象的类型取决于特定的事件。例如， "click" 事件属于 MouseEvent(鼠标事件) 对象。
+                    - useCapture
+                        - 可选。布尔值，指定事件是否在捕获或冒泡阶段执行。
+                        - true - 事件句柄在捕获阶段执行
+                        - false 默认。事件句柄在冒泡阶段执行
+                        - 一般都时false
+
+            attachEvent()
+                - 方法用于向指定元素添加事件句柄。
+                - 只使用于ie8
+                
+
+
+        鼠标/键盘属性：event.鼠标属性
+            clientX，clientY
+                - 获取鼠标当前可见窗口的坐标
+
+            pageX, pageY
+                - 获取鼠标当前页面的坐标
+                - 但是这两个属性在ie8中不支持
+
+            wheelDelta
+                - 获取鼠标滚轮滚动方向
+                - 这个属性中火狐不支持
+                - 再火狐中使用event.detail来获取
+
+            onkeydown
+                -  某个键盘按键被按下。 
+                - 如果按住不放会连续触发
+            
+            onkeyup
+                - 某个键盘按键被松开。
+
+            keyCode
+                - 判断哪个按键被按下
+            
+            altKey，ctrlKey， shiftKey
+                - 返回当事件被触发时，"ALT","CTRL","SHIFT" 键是否被按下。
+
+            
+
+
+        属性：event.属性
+            - cancelBubble = true
+                - 取消冒泡
+            - bubbles
+                - 返回布尔值，指示事件是否是起泡事件类型。
+
+            - target
+                - 返回触发此事件的元素（事件的目标节点）。
+
+
+        方法：event.方法()
+            - event.preventDefault()
+                - 取消浏览器默认事件
+                - 通过addEventListener绑定的事件特有的
+
+                - ie8不支持此方法
+
+        IE特有：
+            setCapture()
+                - 捕获所有事件到此元素
+
+            releaseCapture()
+                - 释放捕获事件
+        */
+
+        // 获取按钮对象
+        var btn = document.getElementById("btn")
+        // 绑定一个单击事件
+        btn.onclick = function(event){
+
+            // 为了防止响应函数中没有event
+            event = event || window.event
+            // 打印event对象
+            console.log(event)
+        }
+
+    </script>
+</body>
+</html>

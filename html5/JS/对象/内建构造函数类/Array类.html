@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+        
+        Array 数组
+
+        数组中可以时任意的数据类型，包括Object
+
+
+        方法：
+            push()  向数组中添加一个或多个元素，并返回数组的长度
+            length  返回数组的长度，也可以设置数组的长度
+            pop()   删除数组的最后一个元素，返回最后一个元素
+            unshift()  向数组开头添加一个或多个元素，并返回数组的长度
+            shift()   删除数组开头的一个元素，并返回第一个元素
+            forEach()  便利数组,但是ie8以及一下的浏览器不支持这个函数
+            slice(a, b)   
+                片分数组,返回新的数组，a为开始位置，b为结束位置，
+                该方法不会改变原数组，如果不写b，截取到末尾
+                如果为负数，从后往前
+
+            splice(a, b, c)  
+                删除数组中的指定元素，并添加新的元素,会修改原数组，并将被删除的元素作为返回值
+                a表示开始索引，b表示删除的数量, 
+                c以及以后的参数表示添加的新元素，添加的位置为a的位置的前面
+
+            a.content(b，c)
+                合并a数组和b数组以及c数组，该方法不会对原数组产生影响，产生一个新的数组
+                b,c也可以是元素
+
+            a.join(b)
+                将数组转化为字符串，b参数作为数组间元素的连接符，如果没有参数，为逗号
+
+            a.reverse()
+                反转数组，该方法会直接修改原数组
+            
+            a.sort()
+                对原数组进行排序
+                即使对于纯数字的数组，也会按照Unicode编码来排序
+                我们可以自己来指定排序规则，在sort中添加一个回调函数用来自定义排序规则
+                浏览器会根据回调函数的返回值来决定元素的顺序，
+                    如果返回一个大于零的值，则元素会交换位置，
+                    如果返回一个小于零的值，则元素位置不变
+                    如果返回一个零，则认为两个元素相等，也不交换位置
+
+            a.filter(fun1)
+                过滤a数组，生成一个新的数组
+                - fun1为过滤函数，入参为a数组中的每一个元素，返回值为bool值，
+                  如果为true加入新数组，如果为false则过滤掉
+
+            a.map(fun2)
+                对数组中的每一个元素进行处理，然后生成一个新的数组
+                - fun2为处理元素的函数
+
+            a.reduce(fun3, 0)
+                对数组中的所有元素进行汇总，比如累加，累乘
+
+
+             
+        */
+        // 新建数组
+        var arr = new Array(1, 2, 3, 4, 5);
+        var arr1 = [0, 1, 2]
+
+        // 注意，这两种创建方法还是有区别的，
+        // 表示创建一个长度为5的数组
+        var arr = new Array(5) 
+        // 创建一个数组，里面只有一个元素，为5
+        var arr1 = [5]
+        // 修改数组中的元素
+        arr[0] = 10;
+        arr[1] = 11;
+        // 遍历数组
+        for (i=0; i<arr.length; i++){
+            console.log(i, arr[i])
+        }
+
+        // 使用forEach遍历
+        arr.forEach(function(value, index, obj){
+            console.log(index,value, obj)
+        })
+
+        console.log(arr)
+    </script>
+
+</head>
+<body>
+    <h3>数组</h3>
+</body>
+</html>

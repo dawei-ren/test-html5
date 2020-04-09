@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        /*
+        
+        类（构造函数）的继承
+
+
+            - 原型链+借用构造函数的组合继承
+
+                1. 利用原型链实现对父形对象的方法继承
+                2. 利用call()方法借用父类形构造函数初始化相同属性
+        */
+
+        // 定义父类
+        function Person(name, age){
+            this.name = name;
+            this.age = age;
+        }
+
+        Person.prototype.setName = function(name){
+            this.name = name
+        }
+
+
+        // 定义子类继承父类
+        function Student(name, age, price){
+            Person.call(this, name, age)  // 为了得到属性
+            this.price = price
+        }
+        Student.prototype = new Person()     // 为了能看到父类型的方法
+        Student.prototype.constructor = Student   // 为了修正constructor
+        Student.prototype.setPrice = function(price){
+            this.price = price
+        }
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

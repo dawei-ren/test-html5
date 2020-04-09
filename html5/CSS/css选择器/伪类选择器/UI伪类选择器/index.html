@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI伪类选择器</title>
+
+    <style type="text/css">
+        /* 设置表单元素的可用与禁用两种状态的css样式 */
+        .can input:enabled {
+            outline: 1px solid green;
+        }
+
+        :disabled {
+            background-color: grey;
+        }
+
+        /* 设置表单元素被选中时的样式 */
+        :checked + span {
+            background-color: red;
+        }
+
+
+        /* 设置必填和可选的样式 */
+        .must :required {
+            outline: 3px solid red;
+        }
+
+        .must :optional {
+            outline: 3px solid green;
+        }
+
+        /* 设置默认元素的样式 */
+        .must :default {
+            outline: 3px solid gray;
+        }
+
+        /* 请输入合法与非法这两种情况对应的CSS样式 */
+        .email input:valid {
+            border: 2px solid green;
+        }
+
+        .email input:invalid{
+            border: 2px solid red;
+        }
+
+        /* 设置用户输入“在范围内” 和 “不在范围内” 这两种情况对应的css样式 */
+        .num :in-range {
+            border: 2px solid green;
+        }
+
+        .num :out-of-range {
+            border: 2px solid red;
+        }
+
+
+        /* 设置输入在“只读” 与“可读可写”属性对应的样式 */
+
+        .oo input:-moz-read-only {
+            /* 适用于火狐浏览器 */
+            background-color: red;
+        }
+
+        .oo input:-moz-read-write {
+            /* 适用于火狐浏览器 */
+            background-color: yellow;
+        }
+
+
+        .oo input:read-only {
+            background-color: red;
+        }
+
+        .oo input:read-write {
+            background-color: yellow;
+        }
+    </style>
+
+</head>
+<body>
+    <form class="can">
+        <p>
+            <label for="enabled">可用：</label>
+            <input type="text" name="enabled">
+        </p>
+        <p>
+            <label for="disbaled">禁用：</label>
+            <input type="text" name="disabled" disabled>
+        </p>
+        <button>可用按钮</button>
+        <button>禁用按钮</button>
+
+        <br><br>
+        
+    </form>
+
+    <form>
+        <input type="radio" name="gender" value="male"><span>男人</span><br>
+    </form>
+
+    <form class="must">
+        <p>
+            <label for="required">必填：</label>
+            <input type="text" name="reuired" required>
+        </p>
+        <p>
+            <label for="potinal">可选：</label>
+            <input type="text" name="potinal">
+        </p>
+        <button type="submit">提交</button>
+    </form>
+    <br>
+
+
+    <form class="email">
+        <input type="email" placeholder="请输入您的邮箱">
+        <button type="submit"> 提交</button>
+    </form>
+
+    <br><br>
+
+    <form class="num">
+        <input type="number" min="0" max="99" value="66">
+        <button type="submit">提交</button>
+    </form>
+
+    <p class="oo">普通的input输入框： <input type="text"></p>
+    <p class="oo">只读的input输入框：<input readonly type="text"></p>
+</body>
+</html>

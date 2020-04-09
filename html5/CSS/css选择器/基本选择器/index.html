@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>王维</title>
+
+    <style type="text/css">
+        /* 在此处填写CSS样式 */
+        /* 通用选择器 */
+        * {
+            padding: 10px;
+            background-color: #d1f1ff;
+        }
+
+        /* 元素选择器 */
+        h2 {
+            text-align: center;
+        }
+
+        span {
+            color: gray;
+            padding: 0px;
+        }
+
+        /* 类选择器 */
+        .slogan {
+            text-align: center;
+            color: #2ebb96;
+        }
+
+        .content {
+            text-indent: 2em;
+        }
+
+        /* id选择器 */
+        #ol {
+            color: red;
+        }
+
+        /* 交集选择器，在所有span中只有id为content才会有黑框效果 */
+        span.content {
+            border: thin black solid;
+        }
+
+        /* 并集选择器,将所有的标签的公共部分抽取出来，方便管理 */
+        h2, p, span {
+            font-style: italic;
+        }
+
+        /* 
+        后代选择器，先选择一个，再从匹配的条件的后代中选择一个 
+        所有body下的content1类有的效果，孙子也匹配
+         */
+
+        body .content1 {
+            border: thin green solid;
+        }
+
+        /* 
+        子元素选择器,只匹配子元素，不匹配孙子元素
+        body下的content2类有效果，但是content2再里面的content2就没有效果
+        */
+
+        body > .content2 {
+            border: thin black solid;
+        }
+
+        /* 相邻兄弟选择器, 只有再slogan后面紧挨着的的p标签才有效果 */
+        .slogan + p {
+            color: yellow;
+        }
+
+        /* 通用兄弟选择器， 在slogan1后面紧挨着的所有p标签都有效果*/
+        .slogan1 ~ p {
+            color: teal;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>王维</h2>
+    <p class="slogan">
+        （701年－761年，一说699年—761年）
+    </p>
+    <p class="content">
+        王维，字摩诘，号摩诘居士。
+        <span>河东蒲州</span>（今山西运城）人，祖籍<span id="ol">山西祁县</span>。
+        唐朝著名诗人、画家。
+    </p>
+    <p class="content">
+        王维出身河东王氏，于开元十九年（731年）状元及第。
+        历官右拾遗、监察御史、河西节度使判官。
+        唐玄宗天宝年间，王维拜吏部郎中、给事中。
+        安禄山攻陷长安时，王维被迫受伪职。
+        长安收复后，被责授太子中允。
+        唐肃宗乾元年间任尚书右丞，故世称“王右丞”。
+    </p>
+
+    <p class="content1">
+        王维参禅悟理，学庄信道，精通诗、书、画、音乐等，以诗名盛于开元、天宝间，
+        尤长五言，多咏山水田园，与孟浩然合称“王孟”，有“诗佛”之称 [1]  。书画特
+        臻其妙，后人推其为南宗山水画之祖。
+        苏轼评价其：<span class="content">“味摩诘之诗，诗中有画；观摩诘之画，画中有诗。”</span> [2]  
+        存诗400余首，代表诗作有《相思》《山居秋暝》等。
+        著作有<span>《王右丞集》</span>《画学秘诀》。
+    </p>
+
+    <p class="slogan1">
+        王维于武则天长安元年（701年）出生在蒲州（今运城永济市）
+    </p>
+
+    <p class="content2">
+        王维才华早显，与其小一岁的弟弟王缙幼年均聪明过人。十五岁时去京城应试，由于他能写一手好诗，
+        工于书画，而且还有音乐天赋，所以少年王维一至京城便立即成为京城王公贵族的宠儿。有关他在音
+        乐上的天赋，《唐国史补》曾有这样一段故事：一次，一个人弄到一幅奏乐图，但不知为何题名。王
+        维见后回答说 ：“这是《霓裳羽衣曲》的第三叠第一拍。”请来乐师演奏，果然分毫不差（根据沈括
+        《梦溪笔谈》卷十七“书画”的考证，<span class="content2">《霓裳羽衣曲》</span>第三叠并没有拍，是散曲，白居易的句子“中序擘
+        騞初入拍”也可以说明这一点。沈括精通音律，其言可信。王维工于音律，是正史所载之事，但这个故
+        事却是编造的）。
+    </p>
+    <p>
+        唐玄宗开元十九年（731年），王维状元及第（一说开元九年<721年>中进士），任太乐丞
+        ，因伶人舞黄狮子受累，贬为济州司仓参军。
+    </p>
+</body>
+</html>

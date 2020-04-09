@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        <!--无序列表-->
+        <ul class="list_a">
+            无序列表a
+            <li>第一项</li>
+            <li>第二项</li>
+        </ul>
+
+        <ul class="list_b">
+            无序列表b
+            <li>第一项</li>
+            <li>第二项</li>
+        </ul>
+
+        <!-- 列表嵌套 -->
+        <ul class="list_c">
+            无序列表c
+            <li>第一项</li>
+            <li>第二项</li>
+
+            <li>
+                <ul class="list_d">
+                    无序列表d 列表嵌套
+                    <li>第一项</li>
+                    <li>第二项</li>
+                </ul>
+            </li>
+        </ul>
+
+        <!-- list-style-type可以设置前面标志的形状 -->
+        <ul class="list_e" style="list-style-image: url(https://ws1.sinaimg.cn/large/006tKfTcgy1g1lyq4x0ukg300e00e0ga.gif)">
+            无序列表e,前面自定义图片
+            <li>第一项</li>
+            <li>第二项</li>
+        </ul>
+    </p>
+
+    <p>
+        <!-- 有序列表 -->
+        <ol>
+            有序列表
+            <li>第一项</li>
+            <li>第二项</li>
+        </ol>
+
+    </p>
+
+    <p>
+        <!--定义列表-->
+        <dl>
+            <!-- 单条术语单挑描述 -->
+            <dt>单条术语</dt>
+            <dd>单条描述</dd>
+        </dl>
+
+        <dl>
+            <!-- 多条术语单条描述 -->
+            <dt>多条术语</dt>
+            <dt>多条术语</dt>
+            <dt>多条术语</dt>
+            <dd>单条描述</dd>
+        </dl>
+
+        <dl>
+            <!-- 单条术语多条描述 -->
+            <dt>单条术语</dt>
+            <dd>多条描述</dd>
+            <dd>多条描述</dd>
+        </dl>
+
+        <dl>
+            <!-- 多条术语多条描述 -->
+            <dt>多条术语</dt>
+            <dt>多条术语</dt>
+            <dd>多条描述</dd>
+            <dd>多条描述</dd>
+        </dl>
+    </p>
+</body>
+</html>

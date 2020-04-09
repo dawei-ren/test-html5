@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+
+
+        window.onload = function(){
+
+            /*
+            兼容IE8的思路
+
+
+            先使用其他浏览器实现，如果不支持用ie8，则再使用其他ie8支持的方法实现，
+            然后封装成函数进行判断
+            */
+
+
+            /*
+
+            向指定元素绑定句柄
+            */
+
+            function bind(obj, eventStr, callback){
+
+                /*
+                向指定元素绑定句柄
+                    obj 要绑定的事件
+                    eventStr 事件的字符串（不要on）
+                    callback 回调函数
+                */
+                if(obj.addEventListener){
+                    // 大部分浏览器兼容的方式
+                    obj.addEventListener(eventStr, callback, false)
+
+                }else{
+                    // IE8及一下,需要修改this的调用者
+                    obj.attachEvent("on"+eventStr, function(){
+                        callback
+                    });
+                }
+            }
+
+
+            /*
+            获取event对象
+
+            event = event || window.event
+            */
+
+
+            /*
+
+            拖拽
+            事件捕获中使用 在拖拽练习
+
+            box1.setCapter && box1.setCapter()
+            box1.releaseCapture && box1.releaseCapture()
+            */
+
+            function drag(obj){
+                /*
+                拖拽元素
+
+                    obj：被拖拽的元素对象
+                */
+
+                obj.onmousedown = function(event){
+
+                event = event || window.event
+
+                // if (box1.setCapter){
+                //     box1.setCapter()
+                // }
+
+                obj.setCapter && obj.setCapter()
+
+
+                // 求div的水平偏移量   event.clientX - box1.offsetLeft
+                // 求div的垂直偏移量   event.clientY - box1.offsetTop
+
+                var ol = event.clientX - obj.offsetLeft
+                var ot = event.clientY - obj.offsetTop
+
+                // 为document绑定一个onmousemove事件
+                document.onmousemove = function(event){
+                    event = event || window.event
+
+                    // 当鼠标移动时被拖拽元素跟随鼠标移动
+                    // 获取鼠标坐标
+                    var left = event.clientX - ol
+                    var top = event.clientY - ot
+
+                    // 修改box1的位置
+
+                    obj.style.left = left + "px"
+                    obj.style.top = top + "px"
+                }
+
+
+                // 为元素绑定一个鼠标松开事件
+                document.onmouseup = function(){
+                    // 当鼠标松开时，被拖拽元素固定在当前位置
+                    // 取消document的onmousemove事件
+
+                    document.onmousemove = null;
+                    // 取消document.onmouseup事件
+                    document.onmouseup = null;
+
+                    obj.releaseCapture && obj.releaseCapture()
+                }
+
+
+                /*
+                当我们拖拽一个网页中的内容的时候，浏览器会默认去搜索引擎中搜索内容，
+                此时会导致拖拽功能异常，这个时浏览器提供的默认行为
+                如果不希望发生这个行为，可以通过return false来取消默认行为
+
+                但是这招对IE8不起作用
+
+                所以如果要在IE8中使用，要使用setCapture
+                */
+
+                return false
+                }
+            }
+
+
+
+            /*
+            
+
+            获取指定元素的指定样式
+
+            */
+
+            function getStyle(obj, name){
+
+                /*
+                获取指定元素当前所有样式
+                    obj 要获取样式的元素
+                    name 要获取的样式名
+                */
+
+                if(window.getComputedStyle){
+                    // 正常浏览器的方式，具有getComputedStyle方法
+
+                    return getComputedStyle(obj, null)[name]
+                }else{
+                    // IE8的方式，没有getComputedStyle（）方法
+
+                    return obj.currentStyle[name];
+                }
+            }
+        
+            
+            /*
+            
+            移动元素函数
+            */
+
+            // var timer
+
+            function move(obj, target, speed){
+
+                /*
+                参数：
+
+                    obj：执行动画的对象
+                    target： 执行动画的目标位置
+                    speed： 移动的速度
+                */
+
+                // 关闭上一个定时器
+                clearInterval(obj.timer);
+
+                // 获取元素当前位置
+
+                var current = parseInt(getStyle(obj, "left"))
+
+                /*
+                如果从0到800移动，则speed为正
+                如果从800到0移动，则speed为负
+                
+                */
+                if(current > target){
+                    speed = -speed
+                }
+
+
+                // 开启一个定时器，用来执行动画效果
+                // 向执行动画的对象中添加一个timer，用来保存它自己的定时器标识
+                obj.timer = setInterval(function(){
+                    // 获取obj原来的left值
+
+                    var oldValue = parseInt(getStyle(obj, "left")) 
+
+                    // 在旧值的基础上增加
+                    var newValue = oldValue + speed;
+
+                    // 向左移动时，需要判断newValue是否小于target
+                    // 向右移动时，需要判断newValue是否大于target
+                    if((speed < 0 && newValue < target) || (speed > 0 && newValue > target)){
+                        newValue = target;
+                    }
+
+                    // 将新值设置给obj
+                    obj.style.left = newValue + "px";
+
+                    // 当新值移动到800px时，使其停止动画
+
+                    if (newValue==target){
+
+                        clearInterval(obj.timer)
+                    }
+                }, 1000)
+
+
+
+            }
+        
+        
+        
+        }
+    </script>
+</head>
+<body>
+    
+    
+</body>
+</html>

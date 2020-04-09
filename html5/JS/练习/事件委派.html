@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+
+
+            var u1 = document.getElementById("u1")
+
+            var btn01 = document.getElementById("btn01")
+
+
+
+            // 为btn01绑定单击响应事件来添加一个超链接
+
+            btn01.onclick = function(){
+                var ul = document.createElement("li")
+                ul.innerHTML = "<a href='javascript:;' class='link' >我是新建的超链接</a>"
+
+                u1.appendChild(ul)
+            } 
+
+            
+
+            /*
+            为每一个超链接添加单击响应事件
+            
+            但是这样问题就来了，这种绑定只能给原来的超链接绑定单击响应事件，
+            新建的超链接并没有单击响应事件，所以这种方法不可取
+
+
+            事件委派
+                - 指将事件统一绑定给元素共同的祖先元素，
+                - 这样后代元素上的事件被触发时，会一直冒泡到祖先元素，从而通过祖先元素的响应函数来处理
+
+            所以我们决定给ul绑定单击响应事件
+            */
+
+            // var aAll = document.getElementsByTagName("a")
+
+            // for(var i=0; i<aAll.length; i++) {
+            //     aAll[i].onclick = function(){
+            //         alert("我是超链接")
+            //     }
+            // }
+
+            u1.onclick = function(event){
+                event = event || window.event
+
+                // 找到触发事件的对象
+
+                t = event.target
+
+                if (t.className == "link"){
+                    alert("我是单击响应函数")
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <button id="btn01">添加超链接</button>
+    <ul id="u1">
+        <li><a href="javascript:;" class="link">我是超链接1</a></li>
+        <li><a href="javascript:;" class="link">我是超链接2</a></li>
+        <li><a href="javascript:;">我是超链接3</a></li>
+    </ul>
+</body>
+</html>

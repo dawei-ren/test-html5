@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../../static/js/vue/vue.js"></script>
+</head>
+<body>
+    <!-- 模板语法 -->
+
+    <div id="app">
+
+        <p>
+            <!-- 
+                v-bind
+
+                响应式的更新 Attribute属性 
+
+                    - 缩写：<a :href="url">...</a>
+
+                绑定class
+                    - 我们可以传给 v-bind:class 一个对象，以动态地切换 class：
+
+                绑定内联样式
+            -->
+
+            <div v-bind:id="dynamicId">
+                属性绑定
+            </div>
+
+            <!-- 
+                对于布尔 attribute (它们只要存在就意味着值为 true)，
+                v-bind 工作起来略有不同，在这个例子中：
+
+                如果 isButtonDisabled 的值是 null、undefined 或 false,
+                则 disabled attribute 甚至不会被包含在渲染出来的 <button> 元素中。
+             -->
+             <button v-bind:disabled="isButtonDisabled">Button</button>
+
+
+        </p>
+
+
+        <h3>绑定class</h3>
+
+        <p>
+            <!-- 
+
+                绑定class
+
+                我们可以传给 v-bind:class 一个对象，以动态地切换 class： 
+
+                表示 active 这个 class 存在与否将取决于数据属性 isActive 的 truthiness。
+
+                结果渲染为：
+                <div class="static active"></div>
+            -->
+
+            <div v-bind:class="{ active: isActive }"></div>
+
+            <!-- 
+                v-bind:class 指令也可以与普通的 class 属性共存
+             -->
+             <div
+                class="static"
+                v-bind:class="{ active: isActive, 'text-danger': hasError }">
+            </div>
+
+            <!-- 绑定的数据对象不必内联定义在模板里： -->
+            <div v-bind:class="classObject"></div>
+
+            <!-- 我们也可以在这里绑定一个返回对象的计算属性 -->
+            <div v-bind:class="classObject1"></div>
+
+            <!-- 我们可以把一个数组传给 v-bind:class，以应用一个 class 列表 -->
+            <div v-bind:class="[activeClass, errorClass]"></div>
+
+            <!-- 
+                如果你也想根据条件切换列表中的 class，可以用三元表达式： 
+                这样写将始终添加 errorClass，但是只有在 isActive 是 truthy[1] 时
+                才添加 activeClass
+            -->
+            <div v-bind:class="[isActive ? activeClass : '', errorClass]"></div>
+            <!-- 
+                数组语法中也可以使用对象语法：
+             -->
+
+            <div v-bind:class="[{ active: isActive }, errorClass]"></div>
+        </p>
+
+
+        <h3>绑定内联样式</h3>
+        <p>
+            <!-- 
+                v-bind:style
+
+                绑定内联样式
+             -->
+
+            <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">
+            Vue
+            </div>
+
+             <!-- 直接绑定到一个样式对象通常更好，这会让模板更清晰： -->
+            <div v-bind:style="styleObject">样式对象</div>
+
+            <!-- v-bind:style 的数组语法可以将多个样式对象应用到同一个元素上 -->
+            <div v-bind:style="[baseStyles, overridingStyles]"></div>
+        </p>
+
+        
+    </div>
+
+
+    <script>
+
+        // 创建一个vue实例
+        var app = new Vue({
+            
+            // 找到操作的元素
+            el: "#app",
+
+            // 数据对象
+            data: {
+                a: "123",
+                b: "<span v-html='rawHtml'></span>",
+                dynamicId: "id",
+
+                isButtonDisabled:true,
+                number: 3,
+                ok: true,
+                message: "Ren Dawei",
+
+                question: '',
+                answer: 'I cannot give you an answer until you ask a question!',
+
+
+                isActive: true,
+                hasError: false,
+
+                classObject: {
+                    active: true,
+                    'text-danger': false
+                },
+
+                activeClass: 'active',
+                errorClass: 'text-danger',
+
+                activeColor: 'red',
+                fontSize: 30,
+                styleObject: {
+                    color: 'red',
+                    fontSize: '13px'
+                },
+                baseStyles: {
+                    color: 'red',
+                    fontSize: '13px'
+                },
+                overridingStyles: {
+                    color: 'red',
+                    fontSize: '13px'
+                },
+                counter: 0
+            },
+
+            // 计算属性
+            computed: {
+                reversedMessage: function () {
+                    // `this` 指向 vm 实例
+                    return this.message.split('').reverse().join('')
+                },
+
+                classObject1: function () {
+                    return {
+                        active: this.isActive && !this.error,
+                        'text-danger': this.error && this.error.type === 'fatal'
+                    }
+                }
+
+            },
+
+            // 侦听器
+            watch: {
+                // 如果 `question` 发生改变，这个函数就会运行
+                question: function (newQuestion, oldQuestion) {
+                        this.answer = 'Waiting for you to stop typing...'
+                        // this.debouncedGetAnswer()
+                    }
+            },
+
+            methods: {
+                greet: function (event) {
+                // `this` 在方法里指向当前 Vue 实例
+                    alert('Hello ' + this.a + '!')
+                    // `event` 是原生 DOM 事件
+                    if (event) {
+                        alert(event.target.tagName)
+                    }
+                },
+                say: function (message, event) {
+                    alert(message)
+                }
+            },
+
+            
+
+        })
+    </script>
+    
+</body>
+</html>

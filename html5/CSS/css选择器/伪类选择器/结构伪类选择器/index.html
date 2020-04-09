@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>结构伪类选择器</title>
+    <style>
+        /* 设置根元素的样式 */
+        :root {
+            background-color:gray;
+        }
+
+        /* 设置空元素的样式 */
+        :empty {
+            width: 100px;
+            height: 100px;
+            background-color: greenyellow;
+        }
+
+        /* 设置第一个作为子元素的p元素的样式 */
+        .f P:first-child {
+            border: 2px solid green;
+        }
+
+        /* 设置最后一个作为子元素的p元素的样式 */
+        .f P:last-child {
+            border: 2px solid green;
+        }
+
+        /* 设置只有一个子元素的span */
+
+        .f span:only-child {
+            border: 2px solid yellow;
+        }
+
+        /* 匹配父元素下唯一类型的strong */
+        strong:only-of-type{
+            border: 2px solid black;
+        }
+
+        /* 匹配父元素下的第一个类型和最后一个P类型 */
+
+        p:first-of-type {
+
+            /* nth-first-of-type  匹配父元素下的第n个类型和最后一个P类型*/
+            border: 2px solid red;
+        }
+
+        P:last-of-type {
+
+            /* nth-last-of-type  匹配父元素下的倒数第n个类型和最后一个P类型*/
+            border: solid 2px red;
+        }
+
+        /* 设置body第二个p子元素的样式 */
+        p:nth-child(2) {
+            border: solid 2px orange;
+        }
+
+        /* 设置body倒数第二个p子元素的样式 */
+        p:nth-last-child(2) {
+            border: solid 2px orange;
+        }
+
+    </style>
+</head>
+<body>
+    <p></p>
+    <p>hello world</p>
+    <p></p>
+
+    <div class="f">
+        <p>尾崎八项：</p>
+        <p>1、<span>emerging force</span>天生丽质<strong>emerging force</strong></p>
+        <p>2、<span>emerging force</span>天生丽质</p>
+        <p>3、<span>emerging force</span>天生丽质</p>
+        <p>4、<span>emerging force</span>天生丽质</p>
+        <p>5、<span>emerging force</span>天生丽质</p>
+        <p>6、<span>emerging force</span>天生丽质</p>
+        <p>7、<span>emerging force</span>天生丽质</p>
+    </div>
+
+
+</body>
+</html>

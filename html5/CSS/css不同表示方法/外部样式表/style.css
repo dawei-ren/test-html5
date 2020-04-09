@@ -1,0 +1,12 @@
+h1 {
+    color: red;
+}
+p {
+    color: green; 
+    font-size: 14px;
+}
+a {
+    color: #ee82ee; 
+    border: 2px black dashed; 
+    padding: 5px;
+}

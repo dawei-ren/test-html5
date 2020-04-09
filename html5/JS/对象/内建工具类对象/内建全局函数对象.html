@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        /*
+        内建函数
+
+        String（） 
+            - 函数将其他类型转化为字符串类型
+        
+        Number（） 
+            - 函数将其他类型转化为number类型
+
+        parseInt() 
+            - 也是将字符串转化为整数，但是可以分解字符串中开头的有效整数
+
+        parseFloat()
+            - 也是将字符串转化为浮点数，但是可以分解字符串中开头的有效浮点数
+            - 第二个参数可以指定是多少进制
+
+        Boolean() 
+            - 将其他类型转化为布尔值
+
+        isNaN()  
+            -用来判断一个值是否是NaN
+        */ 
+
+        
+
+
+        // String（） 函数将其他类型转化为字符串类型
+        var d_str = String(d)
+        console.log("d_str", d_str, typeof d_str)
+
+        /*
+        Number（） 函数将其他类型转化为number类型
+        bollean类型转换为数字变为0和1
+        */
+        var e_num = Number(e)
+        console.log("e_num", e_num, typeof e_num)
+
+
+        /*
+        
+
+        parseFloat()
+        */
+
+        var i = "123px"
+
+        i_int = parseInt(i, 10)
+        console.log("i_int", i_int, typeof i_int)
+
+
+        /*
+        Boolean() 
+        将其他类型转化为布尔值
+        */
+
+        var j = 123;
+        var j_boo = Boolean(j)
+
+        console.log("j_boolean", j_boo)
+
+        /*
+        isNaN()  
+
+        用来判断一个值是否是NaN
+        */
+
+        var k = NaN;
+
+        console.log("k", isNaN(k));
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

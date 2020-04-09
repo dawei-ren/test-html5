@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        
+        //自定义函数对象
+
+        var fun = new Function("console.log('构建函数')");
+        // 调用函数
+        fun()
+
+
+        // 使用函数声明来创建一个函数
+
+        function fun1(a) {
+            console.log("声明一个函数")
+
+            return a
+        }
+
+        fun1(1)
+
+
+        // 使用匿名函数创建函数
+
+        var fun2 = function(){
+            console.log("我是匿名函数")
+        }
+
+        fun2()
+
+        // 回调函数
+
+        
+
+        /*
+        立即执行函数, 也就是匿名函数自调用
+
+        作用：
+            - 隐藏实现
+            - 不会污染外部全局变量
+            - 用来编写js模块
+        
+        */ 
+
+        (function(){
+            console.log("立即执行函数")
+        })()
+
+        /*
+        
+        构造函数
+
+        作用：
+            创建对象
+        */
+        function Person(name, age, gender){
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+        }
+
+
+
+        /*
+        调用函数时，解析器不会检查实参的数量
+
+        多余实参不会被赋值
+        
+        return 后如果不写任何东西，默认返回undefined，不写return，默认也是返回undefined 
+
+        在调用函数时，浏览器每次都会传递进两个隐含的参数：
+            - 函数的上下文对象this
+            - arguments
+                - arguments是一个类数组对象，他可以通过索引来操作数组，也可以获取长度
+                - 在函数调用时，我们所传递的实参都会在arguments中保存
+                - arguments.length可以用来获取实参的长度
+                - 我们即使不定义形参，也可以通过arguments来使用实参
+        */
+
+
+        /*
+        函数对象的方法
+
+        call()和apply()
+            这两个方法都是函数对象的方法，需要通过函数对象来调用
+            当函数调用call()和apply()都会调用函数执行
+            在调用call()和apply()可以将一个对象指定为第一个参数，此时这个对象将会成为函数执行时的this
+            - call() 方法可以将实参在对象只有依次传递
+            - apply() 方法需要将实参封装到一个数组中统一传递
+        
+
+
+
+        函数执行的方法：
+            - 加括号执行
+            - 回调函数执行
+                - DOM事件回调函数
+                - 定时器回调函数
+                - ajax请求回调函数
+                - 生命周期回调函数
+
+
+
+        属性：
+        
+            prototype
+        */
+       
+
+
+
+
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

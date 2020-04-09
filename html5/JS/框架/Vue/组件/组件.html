@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../../static/js/vue/vue.js"></script>
+
+</head>
+<body>
+
+    <div id="app">
+        <!-- 组件 -->
+        <button-counter></button-counter>
+        <!-- 组件复用 -->
+        <button-counter></button-counter>
+        <button-counter></button-counter>
+
+
+        <!-- 通过 Prop 向子组件传递数据 -->
+        <blog-post title="My journey with Vue"></blog-post>
+        <blog-post title="Blogging with Vue"></blog-post>
+        <blog-post title="Why Vue is so fun"></blog-post>
+
+        <!-- 
+            然而在一个典型的应用中，你可能在 data 里有一个博文的数组：
+            并想要为每篇博文渲染一个组件：
+
+            需要通过v-bind来将post的值传进组件
+         -->
+
+        <blog-post
+         v-for="post in posts"
+         v-bind:key="post.id"
+         v-bind:title="post.title"
+        ></blog-post>
+
+
+        
+    </div>
+
+
+    <script>
+
+        /*
+
+        全局组件
+            定义一个名为 button-counter 的新组件
+            一个组件是一个新的实例
+            component：全局注册的
+        */
+        Vue.component('button-counter', {
+            data: function () {
+                return {
+                    count: 0
+                }
+            },
+            template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+        })
+
+        Vue.component('blog-post', {
+            props: ['title'],
+            template: '<h3>{{ title }}</h3>'
+        })
+
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                posts: [
+                    { id: 1, title: '1111111111' },
+                    { id: 2, title: '222222222' },
+                    { id: 3, title: '33' }
+                ]
+            }
+        })
+    </script>
+
+
+    
+</body>
+</html>

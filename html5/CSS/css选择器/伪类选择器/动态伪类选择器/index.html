@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态伪类选择器</title>
+    <style>
+        /* 连接未被访问的时候 */
+        a:link {
+            color: pink;
+        }
+        /* 链接被访问过的时候 */
+        a:visited {
+            color: red;
+        }
+        /* 鼠标悬停在链接上方的时候 */
+        a:hover {
+            /* 必须在link和visited的后面 */
+            color: black;
+        }
+        /* 鼠标摁下链接的那一刻 */
+        a:active {
+            /* 必须在hover后面 */
+            color: green;
+        }
+
+        /* 设置鼠标悬停在div上的样式 */
+        div:hover {
+            color: hotpink;
+        }
+
+
+        /* 设置当元素获得焦点时的样子 */
+        #boy:focus {
+            background-color: cyan;
+        }
+
+        #girl:focus {
+            background-color: pink;
+        }
+
+    </style>
+
+</head>
+<body>
+    <a href="https://cn.bing.com/">点击进行搜索</a>
+    <div>天使爱美丽</div>
+
+    <form action="">
+        <label for="">他的名字：</label>
+        <input type="text" name="name" id="boy">
+        <br><br>
+        <label for="">她的名字：</label>
+        <input type="text" name="name" id="girl">
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图像适配</title>
+</head>
+<body>
+
+    <p>
+        图像适配可根据窗口的大小适配不同的图片
+    </p>
+    <!--   图像适配可根据窗口的大小适配不同的图片-->
+    <picture>
+        <source media="(min-width: 1024px)" srcset="https://ws3.sinaimg.cn/large/006tNc79ly1g25pxr28wnj30pk12b78k.jpg">
+        <source media="(min-width: 512px)" srcset="https://ws4.sinaimg.cn/large/006tNc79ly1g25nzgh2hkj30kr0nk0u1.jpg">
+        <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g26lqct8woj30bt0iwaap.jpg" alt="小姐姐" style="width: auto;">
+    </picture>
+
+    
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图像映射</title>
+</head>
+<body>
+
+    <p>
+        图片映射可点击图片内的不同区域跳转到不同的链接
+    </p>
+    <p>
+        胸：圆形区域；屁股：多边形；腰：矩形。
+    </p>
+    <!--  图像映射可显示一个图片，然后在图片中划定区域，点击区域可进入对应的链接-->
+    <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g25nzgh2hkj30kr0nk0u1.jpg" alt="美女" usemap="#beautiful">
+    
+    <map name="beautiful">
+        <!--       circle需要提供圆心的坐标以及圆的半径-->
+        <area shape="circle" coords="450,400,50" href="https://www.baidu.com/" target="_blank" alt="chest">
+        <!--        poly需要提供多边形每个点的坐标-->
+        <area shape="poly" coords="230,600,400,600,400,755,200,755,180,680" href="https://cn.bing.com/" alt="butt" target="_blank">
+        <!--        rect需要提供矩形左上角和右下角的坐标-->
+        <area shape="rect" coords="280,500,400,550" href="https://translate.google.cn/" alt="waist" target="_blank" style="background-color: aqua">
+    </map>
+    
+</body>
+</html>

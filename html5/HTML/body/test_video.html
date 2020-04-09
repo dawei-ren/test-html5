@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>视频教学</title>
+</head>
+<body>
+    <h1>视频标签</h1>
+    <!--   controls 添加控制器-->
+    <!--   autoplay 自动播放-->
+    <!--   muted 静音播放-->
+    <!--   preload 预加载，默认为auto：让浏览器自动加载，none 在用户未点击开始的时候不会加载视频，metadata 加载视频源数据（一些长度，宽度等数据信息）-->
+    <!--   loop 循环播放-->
+    <!-- poster 可以指定视频的封面 -->
+    <!--
+        <video src="static/six_lady.mp4" width="288" height="512" controls muted autoplay preload="metadata" poster="https://ws4.sinaimg.cn/large/006tNc79ly1g26lhqkfbcj30k00w0abm.jpg" loop>
+        <track src="static/track.vtt" srclang="zh" label="中文字幕" kind="subtitles" default>
+            抱歉，本视频被人偷走了。。。
+        </video>
+    -->
+    
+    <video width="288" height="512" controls>
+        <source src="../basic/mp4/six_lady.mp4" type="video/mp4">
+        <track src="../basic/vtt/track.vtt" kind="subtitles" srclang="en" label="English">
+    </video>
+    
+    <h1>音乐标签</h1>
+    
+    
+</body>
+</html>

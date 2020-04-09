@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+        Winsow 
+            对象表示一个窗口
+
+            浏览器会为 HTML 文档创建一个 window 对象，并为每个框架创建一个额外的 window 对象。
+            window也是网页中的全局对象
+
+
+
+        属性：
+
+        document
+            对document对象的只读引用
+
+        history
+            对 History 对象的只读引用
+
+        location
+            用于窗口或框架的 Location 对象
+        
+        Navigator
+            对 Navigator 对象的只读引用
+
+        Screen
+            对 Screen 对象的只读引用 
+
+
+        方法：
+
+
+        alert("helloword");
+            控制浏览器弹出一个警告框
+
+        prompt(str1)
+            - 弹出一个提示框，该提示框可以输入内容，str1为提示文字
+            - 用户输入的内容将会作为返回值返回
+
+
+        confirm()
+            - 显示带有一段消息以及确认按钮和取消按钮的对话框。
+            - 如果用胡点击确认，返回true，如果用户点击取消，返回false
+
+        getComputedStyle(abc, null)
+            - 获取abc元素当前的所有样式
+
+
+        计时器：
+        
+        setTimeout()
+            在指定的毫秒数后调用函数或计算表达式。
+        
+        clearTimeout()
+            取消由 setTimeout() 方法设置的 timeout。
+
+        setInterval(code, n)
+            按照指定的周期（以毫秒计）来调用函数或计算表达式。
+            可以将一个函数每隔一段时间执行一次
+            - code 必需。要调用的函数或要执行的代码串。
+            - n 必须。周期性执行或调用 code 之间的时间间隔，以毫秒计。
+            - 返回值是一个数字，用来标识定时器，和关闭定时器
+        
+        clearInterval()
+             取消由 setInterval() 设置的 timeout。 
+        */
+
+
+        var age;
+
+        age = prompt("请输入你的年龄：")
+
+        document.write("你的年龄是：", age)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

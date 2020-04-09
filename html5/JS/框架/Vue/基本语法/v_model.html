@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../../static/js/vue/vue.js"></script>
+</head>
+<body>
+    <!-- 模板语法 -->
+
+    <div id="app">
+
+
+
+        <!-- 
+
+            v-model
+
+
+                侦听器 
+                    - 某一属性发生改变，会立即被检测到然后响应相应的函数
+                    - 虽然计算属性在大多数情况下更合适，但有时也需要一个自定义的侦听器。
+                表单输入绑定
+                    - 你可以用 v-model 指令在表单 <input>、<textarea> 及 <select> 
+                        元素上创建双向数据绑定。
+                    - v-model 会忽略所有表单元素的 value、checked、selected attribute
+                        的初始值而总是将 Vue 实例的数据作为数据来源。你应该通过 JavaScript 
+                        在组件的 data 选项中声明初始值。
+        -->
+
+
+        <h3>侦听器</h3>
+        <p>
+            <!-- 侦听器 -->
+            <p>
+                Ask a yes/no question:
+                <input v-model="question">
+            </p>
+            <p>{{ answer }}</p>
+
+        </p>  
+        
+        <h3>表单绑定</h3>
+        <p>
+            <!-- 表单绑定 -->
+            <input v-model="message" placeholder="edit me">
+            <p>Message is: {{ message }}</p>
+        </p>
+
+        <!-- 多行文本 -->
+        <p>
+            <span>Multiline message is:</span>
+            <p style="white-space: pre-line;">{{ message }}</p>
+            <br>
+            <textarea v-model="message" placeholder="add multiple lines"></textarea>
+        </p>
+
+        <!-- 复选框 -->
+        <p>
+            <input type="checkbox" id="checkbox" v-model="checked">
+            <label for="checkbox">{{ checked }}</label>
+        </p>
+
+        <!-- 多个复选框绑定到同一数组 -->
+        <p>
+            <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+            <label for="jack">Jack</label>
+            <input type="checkbox" id="john" value="John" v-model="checkedNames">
+            <label for="john">John</label>
+            <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+            <label for="mike">Mike</label>
+            <br>
+            <span>Checked names: {{ checkedNames }}</span>
+        </p>
+
+        <!-- 单选按钮 -->
+        <p>
+            <input type="radio" id="one" value="One" v-model="picked">
+            <label for="one">One</label>
+            <br>
+            <input type="radio" id="two" value="Two" v-model="picked">
+            <label for="two">Two</label>
+            <br>
+            <span>Picked: {{ picked }}</span>
+        </p>
+
+        <!-- 选择框(单选) -->
+        <h3>选择框（单选）</h3>
+        <p>
+            <select v-model="selected">
+                <option disabled value="">请选择</option>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+            </select>
+            <span>Selected: {{ selected }}</span>
+        </p>
+
+        <h3>选择框（多选）</h3>
+
+        <p>
+            <select v-model="selected2" multiple style="width: 50px;">
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+              </select>
+              <br>
+              <span>Selected: {{ selected2 }}</span>
+        </p>
+
+
+        <!-- 值绑定 -->
+        <h3>值绑定</h3>
+        <!-- 当选中时，`picked` 为字符串 "a" -->
+        <input type="radio" v-model="picked2" value="a">value: {{picked2}}
+        <br>
+        <!-- `toggle` 为 true 或 false -->
+        <input type="checkbox" v-model="toggle"> value: {{toggle}}
+        <br>
+
+        <!-- 当选中第一个选项时，`selected` 为字符串 "abc" -->
+        <select v-model="selected3">
+        <option value="abc">ABC</option>
+        </select>value：{{selected3}}
+
+        <br>
+
+
+        <!-- 
+            修饰符
+
+            .lazy
+                - 默认情况下，v-model 在每次 input 事件触发后将输入框的值与数据进行同步，
+                  如果你不想让他每次都修改，而是等到焦点离开输入框之后再修改，使用这个修饰符
+
+            .number  
+                - 如果想自动将用户的输入值转为数值类型，可以给 v-model 添加 number 修饰符：
+                - <input v-model.number="age" type="number">
+
+            .trim
+                - 如果要自动过滤用户输入的首尾空白字符，可以给 v-model 添加 trim 修饰符：
+         -->
+        
+
+        
+    </div>
+
+
+    <script>
+
+        // 创建一个vue实例
+        var app = new Vue({
+            
+            // 找到操作的元素
+            el: "#app",
+
+            // 数据对象
+            data: {
+                question: '',
+                answer: 'I cannot give you an answer until you ask a question!',
+                message: "请输入信息",
+                checked: true,
+                checkedNames: [],
+                picked: '',
+                selected: '',
+                selected2: [],
+                selected3: "A",
+                picked2:"",
+                toggle: true,
+            },
+            // 侦听器
+            watch: {
+                // 如果 `question` 发生改变，这个函数就会运行
+                question: function (newQuestion, oldQuestion) {
+                        this.answer = 'Waiting for you to stop typing...'
+                    }
+            },
+
+        })
+    </script>
+    
+</body>
+</html>

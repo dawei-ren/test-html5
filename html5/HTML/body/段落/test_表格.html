@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table{
+            border: 1px solid black;
+            /* 合并两条线 */
+            border-collapse: collapse;
+        }
+    
+        th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        <!--表格-->
+        <table>
+            <!--表格标题-->
+            <caption>英雄技能表</caption>
+
+            <!--thead表示头部分-->
+            <thead>
+                <!--tr表示每一行-->
+                <tr>
+                    <!--th表示表头-->
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>随便说句话吧</th>
+                    <th>同一描述</th>
+                </tr>
+            </thead>
+
+            <!--tbody表示主体部分-->
+            <tbody>
+                <tr>
+                    <!--td表示数据单元格 -->
+                    <th>小泽玛丽亚</th>
+                    <td>33</td>
+                    <td>啊啊啊啊啊啊啊</td>
+                    <!-- rowspan 表示可以树框 -->
+                    <td rowspan="2">牛逼</td>
+                </tr>
+                <tr>
+                    <th>仓老师</th>
+                    <td>42</td>
+                    <td>噢噢噢噢噢噢噢噢噢噢，不要啊啊啊啊啊啊啊啊啊啊啊</td>
+                </tr>
+            </tbody>
+            <!-- 结尾部分 -->
+            <tfoot>
+                <tr>
+                    <!--colspan="3"表示可以横跨3列-->
+                    <td colspan="4">上述描述均为作者主观臆断，非官方资料</td>
+                </tr>
+            </tfoot>
+
+        </table>
+    </p>
+</body>
+</html>

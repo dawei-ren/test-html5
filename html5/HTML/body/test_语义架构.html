@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网页架构</title>
+    <style>
+        header {
+            background-color: cadetblue;
+            color: white;
+            text-align: center;
+            padding: 5px
+        }
+        
+        aside {
+            line-height: 30px;
+            background-color: darkgoldenrod;
+            height: 300px;
+            width: 100px;
+            float: left;
+            padding: 15px;
+        }
+        
+        section {
+            width: 600px;
+            float: left;
+            padding: 10px;
+        }
+        
+        footer {
+            background-color: gray;
+            color: white;
+            clear: both;
+            text-align: center;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <!--   header: 定义简介形式的内容-->
+    <!--   nav: 定义页面主导航功能-->
+    <!--   main: 定义主内容，主内容可以有各种子内容区段（比如article、section、div）-->
+    <!--   article: 定义独立的文章内容，与页面其他内容无关-->
+    <!--   section: 定义文档中的节，与article类似，但是section更适用于组织页面使其按照功能分块-->
+    <!--   aside: 定义侧边栏（术语条目、作者简介、相关链接等）-->
+    <!--   footer: 定义页脚部分内容-->
+    <!--   details: 定义详情区域-->
+    <!--   summary: 定义定义details元素的标题-->
+
+
+    <header>
+        <h1>写作的艺术</h1>
+    </header>
+    <aside>
+    <!--  侧边栏-->
+        <p>王小波</p>
+        <p>贾平凹</p>
+        <p>三毛</p>
+    </aside>
+    
+    <!--section元素小心使用，如果潜逃回造成自动缩小-->
+    <section>
+    <!-- details 定义详情，open参数表示默认打开-->
+        <details open>
+            <summary>
+                一直特立独行的猪
+            </summary>
+            <p>
+            我已经四十岁了，除了这只猪，还没见过谁敢于如此无视对生活的设置。
+            相反，我倒见过很多想要设置别人生活的人，还有对被设置的生活安之若素的人。
+            因为这个原故，我一直怀念这只特立独行的猪。
+            </p>
+        </details>
+    </section>
+    <footer>
+        戴先生工作室
+    </footer>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #abc{
+            background-color:gray;
+        }
+    </style>
+</head>
+<body>
+    <h3 id="h">节点对象</h3>
+
+    <div id="abc">
+        <div>a</div>
+        <div>b</div>
+    </div>
+
+    <script>
+        /*
+
+        Element 对象
+
+
+
+        在 HTML DOM 中，Element 对象表示 HTML 元素。
+        Element 对象可以拥有类型为元素节点、文本节点、注释节点的子节点。
+        NodeList 对象表示节点列表，比如 HTML 元素的子节点集合。
+        元素也可以拥有属性。属性是属性节点（参见下一节）。
+
+
+        元素本身
+        element.innerHTML
+            - 设置或返回元素的内容
+
+        element.id
+            - 设置或返回元素的 id。
+
+        element.nodeName
+            - 返回元素的名称。
+
+        element.nodeType
+            - 返回元素的节点类型。
+
+        element.nodeValue
+            - 设置或返回元素值。
+
+        element.tagName 
+            - 返回元素的标签名。
+
+        element.className
+            - 设置或返回元素的 class 属性。
+
+        element.style
+            - 设置或返回元素的 style 属性。
+
+
+        属性操作
+
+        element.getAttribute()
+            - 返回元素节点的指定属性值。
+
+        element.setAttribute()
+            - 把指定属性设置或更改为指定值
+
+
+        查找节点
+
+        element.childNodes
+            - 返回元素子节点的 NodeList。
+
+
+        element.getElementsByTagName()
+            - 返回拥有指定标签名的所有子元素的集合。
+
+        element.firstChild
+            - 返回元素的首个子元素。
+            - 但是注意这样获取的子元素文本元素也算，一般会获取回车元素
+            - 可以使用element.children[0]
+
+        element.children
+            - 获取所有的子元素（标签元素）
+
+        element.lastChild
+            - 返回元素的最后一个子元素。
+
+        element.parentNode
+            - 返回元素的父节点。
+
+        element.previousSibling
+            -  返回位于相同节点树层级的前一个元素。 
+
+        element.nextSibling
+            - 返回位于相同节点树层级的下一个节点。
+
+        
+
+
+
+        添加/替换节点
+
+        element.appendChild()
+            - 把新的子节点添加到指定节点
+            
+        element.removeChild()
+            - 删除子节点
+                
+        element.replaceChild()
+           -  替换子节点
+
+        element.insertBefore()
+            -  在指定的已有的子节点之前插入新节点。 
+
+
+
+        修改css样式
+
+        element.style
+            - 设置或返回元素的 style 属性。 
+            - 通过js修改的css样式都是内联样式，优先级比较高，所以会立即执行
+            - 但是如果在样式中写了!important，此时样式会有最高的优先级，即使通过js也不能覆盖
+            - 修改样式 element.style.样式名 = 样式值
+            - background-color，这种名称在js中不合法，应该改为backgroundColor
+
+
+        element.currentStyle
+            - 获取当前style属性，只有id浏览器支持，其他浏览器不支持
+            - 可以使用window类中提供的getComputedStyle(a, null)来代替
+
+
+        element.clientHeight， element.clientWidth
+            - 返回元素的可见高度，可见宽度。
+            - 也就是包括内容区+内边距
+            - 此属性都是只读的，不能修改
+
+
+        element.offsetHeight， element.offsetWidth
+            - 返回元素的高度， 宽度，
+            - 也就是内容区+内边距+边框，比clientHeight，多了边框
+            - 此属性也是只读的
+
+        element.scrollHeight， element.scrollWidth
+            - 返回元素整个滚动区域的高度，宽度
+
+        element.scrollLeft，element.scrollTop
+            - 返回元素左边缘与视图之间的距离，返回元素上边缘与视图之间的距离。
+            - 也就是滚动条滚动的距离
+
+            - 当满足 scrollHeight - scrollTop == clientHeigh t时，说明垂直滚动条滚动到底了
+
+
+        element.offsetParent
+            - 可以用来获取当前元素的定位元素
+            - 会获取到离当前元素最近的开启了定位的祖先元素
+            - 如果所有的祖先都没有开启，返回body
+
+        element.offsetLeft， element.offsetTop
+            - 返回元素的水平偏移位置，垂直偏移位置 。
+
+        
+        
+        
+
+
+        */
+
+        // h1 = document.getElementById("h")
+        // console.log(h1.nodeName)
+
+        abc = document.getElementById("abc")
+
+        a = abc.children[0]
+        console.log(a.innerHTML)
+
+        // 修改css样式
+        a.style.color = "red"
+        a.style.backgroundColor = "yellow"
+
+        // 获取当前样式
+        var color_abc = getComputedStyle(abc, null)
+        console.log(color_abc.backgroundColor)
+    </script>
+</body>
+</html>

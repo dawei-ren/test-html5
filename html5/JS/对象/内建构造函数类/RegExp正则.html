@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <script>
+        /*
+        正则表达式类
+        
+        可以创建一个正则表达式
+            var reg = new RegExp("正则表达式", "匹配模式")
+            其中第一个参数表示正则表达式，第二个参数表示匹配模式，i表示忽略大小写，g表示全局匹配
+
+        可以使用字面量来创建正则表达式
+            var reg2 = /a/i
+
+
+        test()
+            用来检查一个字符串是否符合正则表达式的规则
+
+        exec()
+            检索字符串中指定的值，返回找到的值，并确定其位置
+
+        */
+
+        var reg = new RegExp("a", "i")
+        console.log(reg.test("jkljaklj"))
+        
+        // 使用字面量方法创建正则表达式
+
+        var reg2 = /a/i
+
+        var res1 = reg2.test("jkljaklj")
+        console.log(res1)
+
+        var res2 = reg2.exec("jkljaklj")
+
+        console.log(res2.index)
+
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

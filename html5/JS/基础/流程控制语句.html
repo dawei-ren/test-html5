@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+
+        // if语句语法
+        // var age = prompt("请输入你的年龄");
+
+        // if(age < 10){
+        //     alert("太嫩了")
+        // }else if(age < 60){
+        //     alert("青春年少")
+        // }else{
+        //     alert("怕是老了")
+        // }
+
+
+
+        // switch语句
+        
+        // var n = prompt("请输入数字");
+
+        // switch(n){
+        //     case "1":
+        //         alert("一")
+        //         break
+        //     case "2":
+        //         alert("二")
+        //         break
+        //     default:  // default为不符合上面条件的情况下
+        //         alert("非法数字")
+        // }
+
+
+        // while  循环语句
+        
+        
+        // var n=0;
+
+        // while(n < 10){
+        //     alert(n);
+        //     n++;
+        // }
+
+
+        // do while 循环
+        // do...while 可以保证循环体至少一次，先执行再判断，while是先判断再执行
+
+        // var n1=0;
+
+        // do{
+        //     alert(n1);
+        //     n1++;
+        // }while(n1 < 10);
+
+
+        // for 循环
+
+        for(var i=0; i < 20; i++){
+
+            if(i%2 == 0){
+                document.write(i+"\n")
+            }
+
+            if(i > 10){
+                break
+            }
+            
+        }
+
+
+        // 给for循环起标签
+
+        outer:
+        for(var i=0; i < 20; i++){
+
+            if(i%2 == 0){
+                document.write(i+"\n")
+            }
+
+            if(i > 10){
+                break
+            }
+
+        }
+
+
+        /*
+        break
+        用来结束循环
+        break 只能结束内循环，如果要结束外循环，可以后面跟循环的标签
+
+
+        continue
+        用来跳过当此循环，后面的内容不执行跳到下次循环
+        */
+
+        const movies = ["海王", "还珠格格","美国往事" ]
+
+
+        for (let i in movies){
+            console.log(movies[i])
+        }
+
+        console.log("-----------------------------");
+
+        for (let index = 0; index < movies.length; index++) {
+            const element = movies[index];
+
+            console.log(element);
+        }
+
+        console.log('--------------------------');
+
+        movies.forEach(element => {
+            console.log(element);
+            
+        });
+
+        console.log('--------------------------');
+
+        for(let movie of movies){
+            console.log(movie);
+            
+        }
+        
+        
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

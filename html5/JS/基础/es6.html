@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>es6</title>
+
+    <script>
+        window.onload = function(){
+
+            /*
+            let 定义变量
+                - 基本不会使用var，会有很大的缺陷，
+                - var没有酷块级作用域，比如if和for循环中的块是不起作用的
+                - let有块级作用域
+            const  定义常量
+                - const是修饰常量的
+                - 一般情况下优先使用const
+                - 常量的含义是指向的对象不能修改，但是额可以改变对象内部的属性
+                
+            
+            对象的字面量增强写法：
+
+            */
+
+
+            const name = "a"
+            const age = 18
+
+            // 这个写法是es6新添加的，同样是通过字面量来创建一个对象
+
+            const obj = {
+                name,
+                age,
+
+                run(){
+                    console.log("running...")
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        /*
+        
+        Navigator
+
+            代表当前浏览器信息，通过该对象可以用来识别不同的浏览器
+            - 由于历史原因，Navigator对象中的大部分属性都已经不能帮助我们识别浏览器了
+            - 一般我们只会使用userAgent来判断浏览器的信息
+        
+        userAgent
+            - 浏览器信息
+            - 但是userAgent已经无法识别IE11了，但是还是可以识别chrome和火狐浏览器
+        
+        */
+
+
+        // 识别不同浏览器
+
+        var ua = navigator.userAgent
+
+        console.log(ua)
+
+        if (/firefox/i.test(ua)){
+            alert("你是火狐")
+
+        }else if(/chrome/i.test(ua)){
+            alert("你是chrome")
+        }else if(/msie/i.test(ua)){
+            alert("你是IE浏览器")
+        }else if("ActiveXObject" in window){
+            alert("你是IE11")
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

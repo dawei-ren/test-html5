@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3> 无敌的input中的type</h3>
+    <p>
+        <form action="label" method="get">
+            
+            <label>姓名：<input type="text" name="name"></label><br><br>
+            <label>邮箱：<input type="text" name="email"></label><br><br>
+          
+            <!--单选框中的name必须要相同的值，才会单选，不然就互相互不影响-->
+            <label><input type="radio" name="sex" value="male">男</label>
+            <label><input type="radio" name="sex" value="female">女</label><br><br>
+            
+            <!--  checkbox 复选框-->
+            <input type="checkbox" name="heros[]" value="heiguafu"> 黑寡妇
+            <input type="checkbox" name="heros[]" value="superman"> 超人
+            <input type="checkbox" name="heros[]" value="iroman"> 钢铁侠
+            <input type="checkbox" name="heros[]" value="spiderman"> 蜘蛛侠
+            <br><br>
+            
+            <!-- 演示时间和日期,这些格式火狐浏览器有可能解析不到，chrome浏览器可以正常解析-->
+            <label>时间：<input type="time" name="time"></label><br><br>
+            <label>日期：<input type="date" name="date"></label><br><br>
+            <label>年月：<input type="month" name="month"></label><br><br>
+            <label>星期：<input type="week" name="week"></label><br><br>
+            <label>本地日期和时间：<input type="datetime-local" name="datetime-local"></label><br><br>
+            
+            <!-- 搜索框-->
+            <label>搜索框：<input type="search" name="search"></label><br><br>
+            <!-- 颜色选择框-->
+            <label>选择颜色 <input type="color" name="color"></label><br><br>
+            <!--用图像作为按钮,点击之后，向后台传输点击的x轴和y轴坐标-->
+            <label>我是一个按钮 <input 
+            type="image" 
+            src="../basic/img/favicon.ico" alt="@">  </label>
+            <br><br>
+           
+            <!-- 隐藏标签-->
+            <label>这个元素隐藏了 <input type="hidden" value="看不见🙈" disabled></label><br><br>
+           
+            
+            
+            <h4>模拟按钮</h4>
+            <!-- type="submit/reset/button" value="提交"可以用来模拟button标签-->
+            <input type="submit" value="提交">
+            <input type="reset" value="重置">
+            <input type="button" onclick="msg()" value="点我">
+            
+        </form>
+
+        <h3>文件上传</h3>
+        <!--文件上传：文件上传必须要用post发送，并且指定enctype编码-->
+        <form action="label" method="post" enctype="multipart/form-data">
+            <!--限制文件上传的尺寸，因为不用让用户看见，可以隐藏,name必须为MAX_FILE_SIZE-->
+            <input type="hidden" name="MAX_FILE_SIZE" value="1">
+            <label>
+                <!--  
+                    accept限制文件的类型,.png,.jpg等等，相应的类型有相应的编码，
+                    image/* 表示所有的图像类型,
+                    multiple可以允许一次性上传多个文件
+                -->
+                选择文件（限制文件的类型）：
+                <input type="file" name="file" accept="image/*" multiple>
+            </label><br><br>
+            
+        </form>
+
+        <h3>输入框限定</h3>
+        <form>
+            <!--限定只能输入数字，min限定最小值，max限定最大值，step限定一次增长多少-->
+            <label>
+                只能输入数字 <input type="number" name="number" min="1" max="200" step="1"> 
+            </label>
+            <br><br>
+           
+            <!-- 数值滚动条 value为初始值-->
+            <label>
+                数值滚动条 <input type="range" name="range" min="1" max="200" step="1" value="1">
+            </label>
+            <br><br>
+            <!-- 输入邮箱 -->
+            <label>
+                只能输入邮箱格式 <input type="email" name="1">
+            </label>
+            <br><br>
+            <!-- pattern可以指定匹配规则，用正则表达式，placeholder位占位提示信息-->
+            <label>
+                只能输入电话格式 
+                <input type="tel" name="2" pattern="((\d{11})|^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$)" placeholder="仅限11位数字">
+            </label>
+            <br><br>
+
+            <label>
+                只能输入url格式 <input type="url" name="3">
+            </label>
+            <br><br>
+
+            <label>
+                占位提示符 <input type="text" name="4" placeholder="仅限11位数字">
+            </label>
+            <br><br>
+
+            <label>
+                <!-- 必填的输入框 -->
+                此处必填 <input type="text" name="5" required>
+            </label>
+            <br><br>
+
+            <label>
+                <!-- 显示输入框的长度 -->
+                设置输入框的长度 <input type="text" size="50">
+            </label>
+            <br><br>
+
+            <label>
+                <!-- 限制输入字符的长度 -->
+                限制输入字符长度为3 <input type="text" maxlength="3">
+            </label>
+            <br><br>
+            
+            <!-- 
+                这个数据列表既可以输入，又可以选择，
+                通过list属性关联datalist标签，但是貌似火狐浏览器没有这个效果
+            -->
+            
+
+            <input type="submit" value="提交">
+        </form>
+
+        <h3>既可以输入，又可以选择</h3>
+
+        <form action="">
+            <label>
+                <!-- 既可以自己输入，又可以选择，需要配合datalist使用 -->
+                既可以输入，又可以选择 <input type="text" list="data_list">
+            </label>
+            <br><br>
+
+            <input type="submit" value="提交">
+
+        </form>
+
+            <!--<h4>数据列表</h4>-->
+        <datalist id="data_list">
+            <option value="1">一</option>
+            <option value="2">二</option>
+            <option value="3">三</option>
+        </datalist>
+</body>
+</html>

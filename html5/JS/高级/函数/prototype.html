@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        /*
+
+        prototype： 原型对象
+
+
+        - 每一个函数function都有一个prototype，即显式原型（属性）
+        - 每一个实例对象都有一个__proto__, 可称为隐式原型（属性）
+        - 对象的隐式原型的值为其对应构造函数的显式原型的值
+        总结：
+            - 构造函数的prototype属性，在定义函数时自动添加的，默认时一个空的object对象（原型对象）
+            - 对象的__proto__属性：创建对象时自动添加的，默认值为构造函数的prototype属性值
+            - 程序员能直接操作显示原型，但是不能直接操作隐式原型
+
+
+        原型链（隐式原型链）：
+            访问一个对象的属性时，
+
+                - 先在自身属性中查找，找到返回
+                - 如果没有，再沿着__proto__这条链向上找，找到返回
+                - 如果最终没有找到，返回undefined
+
+            注意：
+                - 函数的显式原型指向的对象默认时空Object（但Object不满足）
+                - 所有函数都是Function的实例（包含Function）
+                - Object的原型对象时原型链的尽头
+
+
+
+        instanceof时如何判断的
+            - 判断A是不是B构造函数的实例
+            - 表达式：A instanceof B
+            - 如果B函数的显式原型对象再A对象的原型链上，返回True，否则返回false
+
+
+        
+
+
+
+        以后我们创建构造函数时，可以将这些对象共有的属性和方法统一添加到构造函数的原型对象中，
+        这样就不用分别为每个对象都添加，也不会影响到全局作用域，就可以使每个对象都具有这些属性和方法了
+        
+        */
+
+        function Person(name, age, gender){
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+        }
+
+        // 在原型对象中创建公共方法
+        Person.prototype.sayName = function(){
+            console.log(this.name);
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

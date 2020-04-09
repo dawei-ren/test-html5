@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小黑</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font: 13px Helvetica, Arial; }
+        form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+        form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+        form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+        #messages { list-style-type: none; margin: 0; padding: 0; }
+        #messages li { padding: 5px 10px; }
+        #messages li:nth-child(odd) { background: #eee; }
+    </style>
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-1.11.1.js"></script> -->
+    <script>
+        window.onload = function(){
+            var socket = io();
+            var form = document.querySelector("form")
+            var messages = document.querySelector("#messages")
+
+            var user_id = ''
+            
+            form.onsubmit = function(e){
+                e.preventDefault(); // prevents page reloading
+                var m = document.getElementById("m")
+
+                console.log(user_id)
+                // 发送消息
+                socket.emit('send_to', {
+                    to: user_id,
+                    content:m.value
+                });
+                m.value = "";
+                return false;
+            };
+
+            // 接受消息
+
+            socket.on('addUser', function(msg){
+                user_id = msg.id
+                console.log(user_id)
+                var new_el = document.createElement("li") 
+                new_el.innerHTML = msg.id + ' ' + msg.content
+                messages.appendChild(new_el)
+            });
+
+            socket.on('sendClent', function(msg){
+                console.log(msg)
+                var new_el = document.createElement("li") 
+                new_el.innerHTML = msg.content
+                messages.appendChild(new_el)
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>小黑</h1>
+
+    <ul id="messages"></ul>
+    <form action="">
+      <input id="m" autocomplete="off" /><button>Send</button>
+    </form>
+  </body>
+    
+</body>
+</html>

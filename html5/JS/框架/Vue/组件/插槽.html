@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../../static/js/vue/vue.js"></script>
+
+</head>
+<body>
+
+    <h3>插槽</h3>
+
+    <div id="app">
+        <alert-com>
+            <!-- 
+                标签里面的内容就是组件中<slot></slot>定义的内容 
+                里面的内容只跟父元素有关
+            -->
+            <h3>{{msg}}</h3>
+        </alert-com>
+        
+
+    </div>
+
+
+    <script>
+
+        Vue.component("alert-com",{
+            template:`
+            <div>
+                <h1>温馨提示</h1>
+                <div>
+                    <slot></slot>
+                </div>
+            </div>
+            `
+        })
+
+
+        var app = new Vue({
+            el: "#app",
+            data: {
+                msg:"Vue"
+
+            }
+        })
+    </script>
+    
+</body>
+</html>

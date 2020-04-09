@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../../static/js/vue/vue.js"></script>
+</head>
+<body>
+    <!-- 模板语法 -->
+
+    <div id="app">
+
+        <p>
+            <!-- 文本 -->
+            {{a}}
+        </p>
+
+        <p>
+            <!-- 
+                标签
+                双大括号会将数据解释为普通文本，而非 HTML 代码。
+             -->
+            <div>{{b}}</div>
+
+            <!-- 
+                 为了输出真正的 HTML，你需要使用 
+            -->
+            <div>
+                b
+            </div>
+        </p>
+
+        <p>
+            <!-- 
+                使用 JavaScript 表达式
+
+                有个限制就是，每个绑定都只能包含单个表达式，
+            -->
+            <div>
+                {{ number + 1 }}
+            </div>
+            <div>
+                {{ ok ? 'YES' : 'NO' }}
+            </div>
+            <div>
+                {{ message.split('').reverse().join('') }}
+            </div>
+        </p>
+
+        <h3>计算属性</h3>
+
+        <p>
+
+            <!-- 
+
+                计算属性：
+
+                    - 对于任何复杂逻辑，你都应当使用计算属性。 
+
+                    - Vue 知道 vm.reversedMessage 依赖于 vm.message，因此当 vm.message 
+                      发生改变时，所有依赖 vm.reversedMessage 的绑定也会更新。
+
+                    - 计算属性缓存 vs 方法
+                        - 两种方式的最终结果确实是完全相同的。
+                          然而，不同的是计算属性是基于它们的响应式依赖进行缓存的。
+                        - 相比之下，每当触发重新渲染时，调用方法将总会再次执行函数
+            -->
+            <div id="example">
+                <p>Original message: "{{ message }}"</p>
+                <p>Computed reversed message: "{{ reversedMessage }}"</p>
+            </div>
+
+        </p>
+        
+    </div>
+
+
+    <script>
+
+        // 创建一个vue实例
+        var app = new Vue({
+            
+            // 找到操作的元素
+            el: "#app",
+
+            // 数据对象
+            data: {
+                a: "123",
+                b: "<span v-html='rawHtml'></span>",
+                dynamicId: "id",
+
+                isButtonDisabled:true,
+                number: 3,
+                ok: true,
+                message: "Ren Dawei",
+
+                question: '',
+                answer: 'I cannot give you an answer until you ask a question!',
+
+
+                isActive: true,
+                hasError: false,
+
+                classObject: {
+                    active: true,
+                    'text-danger': false
+                },
+
+                activeClass: 'active',
+                errorClass: 'text-danger',
+
+                activeColor: 'red',
+                fontSize: 30,
+                styleObject: {
+                    color: 'red',
+                    fontSize: '13px'
+                },
+                baseStyles: {
+                    color: 'red',
+                    fontSize: '13px'
+                },
+                overridingStyles: {
+                    color: 'red',
+                    fontSize: '13px'
+                },
+                counter: 0
+            },
+
+            // 计算属性
+            computed: {
+                reversedMessage: function () {
+                    // `this` 指向 vm 实例
+                    return this.message.split('').reverse().join('')
+                },
+
+                classObject1: function () {
+                    return {
+                        active: this.isActive && !this.error,
+                        'text-danger': this.error && this.error.type === 'fatal'
+                    }
+                }
+
+            },
+
+            // 侦听器
+            watch: {
+                // 如果 `question` 发生改变，这个函数就会运行
+                question: function (newQuestion, oldQuestion) {
+                        this.answer = 'Waiting for you to stop typing...'
+                        // this.debouncedGetAnswer()
+                    }
+            },
+
+            methods: {
+                doSomething: function(){
+
+                },
+                greet: function (event) {
+                // `this` 在方法里指向当前 Vue 实例
+                    alert('Hello ' + this.a + '!')
+                    // `event` 是原生 DOM 事件
+                    if (event) {
+                        alert(event.target.tagName)
+                    }
+                },
+                say: function (message, event) {
+                    alert(message)
+                }
+            },
+
+            
+
+        })
+    </script>
+    
+</body>
+</html>

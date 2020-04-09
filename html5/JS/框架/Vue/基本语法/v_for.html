@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../../static/js/vue/vue.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+    <div id="app">
+        <h3>明星列表</h3>
+        <ul>
+            <li v-for="item in stars">
+                {{ item}}
+            </li>
+        </ul>
+
+        <h3>学生列表</h3>
+        <ul>
+            <li v-for="item in students">
+                <h5>{{ item.studentName }}</h5>
+                <p>年龄：{{item.age}}---学校：{{item.school}}</p>
+            </li>
+        </ul>
+
+        <h3>学生列表（带索引值）</h3>
+        <ul>
+            <li v-for="item,key in students">
+                <h5>{{ item.studentName }}</h5>
+                <p>年龄：{{item.age}}---学校：{{item.school}}---{{key}}</p>
+            </li>
+        </ul>
+        <h3>循环学生小黑</h3>
+        <ul>
+            <li v-for = "item,key in students[0]">
+                key:{{key}}--value:{{item}}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                stars: ["蔡徐坤", "苏有朋", "赵薇", "周杰伦"],
+                students: [
+                    {
+                        studentName: "小黑",
+                        age:16,
+                        school: "清华"
+                    },
+
+                    {
+                        studentName: "小白",
+                        age: 18,
+                        school: "北大"
+                    },
+
+                    {
+                        studentName:"阿力",
+                        age: 18,
+                        school: "雷王寺"
+                    }
+
+
+                ]
+
+            }
+        })
+    </script>
+    
+</body>
+</html>

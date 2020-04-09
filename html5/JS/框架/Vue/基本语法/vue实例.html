@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../../static/js/vue/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        {{a}}
+    </div>
+
+
+    <script>
+
+        // 创建一个vue实例
+        var app = new Vue({
+            
+            // 找到操作的元素
+            el: "#app",
+
+            // 数据对象
+            data: {
+                a: "123"
+            }
+
+        })
+    </script>
+    
+</body>
+</html>

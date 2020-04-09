@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        window.onload = function(){
+
+            /*
+            
+            Worker 
+            
+            对象可以实现多线程，实现方法如下
+
+            问题：
+                - 慢
+                - 不能跨域加载js
+                - worker内代码不能访问DOM
+                - 不是每个浏览器都支持这个新特性
+            
+            */
+
+
+            var input = document.getElementById("number")
+            var btn = document.getElementById("btn")
+
+
+            btn.onclick = function(){
+                var number = input.value
+                console.log(input)
+
+                // 创建一个warker对象
+                var worker = new Worker('../../static/js/worker.js')
+
+                // 绑定接收信息的监听
+                worker.onmessage = function(event){
+                    console.log("主线程接收分线程返回的数据： " + event.data)
+                    alert(event.data)
+                }
+
+                // 向分线程发送信息
+                worker.postMessage(number)
+                console.log("主线程向分线程发送数据： " + number)
+            }
+        }
+    </script>
+
+
+</head>
+<body>
+    <input type="text" placeholder="数值" id="number">
+    <button id="btn">计算</button>
+    
+</body>
+</html>

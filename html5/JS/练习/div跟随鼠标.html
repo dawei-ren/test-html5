@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+
+            /* 开启box1 的绝对定位 */
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            /*
+            
+            使div可以跟随鼠标移动
+            */ 
+
+            // 获取box1
+
+            var box1 = document.getElementById("box1")
+
+            document.onmousemove = function(event){
+
+                
+                // 解决兼容性问题
+
+                event = event || window.event
+
+                // 获取鼠标的坐标
+                // var left = event.clientX
+                // var top = event.clientY
+
+
+                var left = event.pageX
+                var top = event.pageY
+
+                // console.log(left, top)
+
+
+                // 设置div的偏移量,注意获得的坐标是个数字，必须要加单位
+
+                box1.style.left = left + "px"
+                box1.style.top = top + "px"
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+    <div id="box1"></div>
+</body>
+</html>

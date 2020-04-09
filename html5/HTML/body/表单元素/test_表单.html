@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2>表单</h2>
+    <p>
+        <!--autocapitalize="off"不允许浏览器自动填充, target="_blank"提交之后，在新标签也中去显示结果-->
+        <form target="_blank" action="label" method="post" autocapitalize="off">
+
+            <!--autofocus表示自动聚焦到此行-->
+            姓名：<input type="text" autofocus><br><br>
+            账号：<input type="text" name="name"><br><br>
+            <!--input标签中也有autocapitalize属性，而且可以覆盖form中的此属性-->
+            密码：<input type="password" name="email" autocapitalize="on"><br><br>
+            <!--value指定默认值-->
+            性别：<input type="text" value="女"><br><br>
+            
+            <!--fieldset可以对输入框进行分类-->
+            <fieldset>
+                <!--legend标签对分类进行说明，只能作为fieldset的第一个元素出现-->
+                <legend>其他</legend>
+                <!--disbale表示禁用此输入框，提交的时候忽略此框-->
+                禁用：<input type="text" disabled><br><br>
+                <!--readonly表示只读，也是不可以修改，但是提交的时候还是会提交-->
+                只读：<input type="text" value="不可修改" readonly><br><br>
+                <!--用label元素包裹起来，形成隐式关联，这样在点击label中任何字体可以关联到input输入框-->
+                <label>点击字体也能聚焦到输入框：<input type="text"></label><br><br>
+                <!--label元素中的for属性可以指定id，形成关联，这样点击label中的字，可以关联到id为ca的输入框-->
+                <label for="ca">擦：</label><input type="text" id="ca">
+            </fieldset>
+            <br>
+            
+            <!--添加multiple表示可以多选-->
+            <select name="university">
+                <option value="lan">兰州理工大学</option>
+                <option value="bei">北京大学</option>
+                <option value="qing">清华大学</option>
+
+                <!--optgroup对下拉选项进行分组-->
+                <optgroup label="数字分组">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </optgroup>
+                <optgroup label="汉字分组">
+                    <option value="yi">一</option>
+                    <option value="er">二</option>
+                </optgroup>
+            </select>
+            <br><br>
+
+
+            <button type="submit">提交</button>
+            <!--type="reset"表示点击按钮，会清空等待重新输入-->
+            <button type="reset">重写</button>
+            <!--formmethod="get" 重写form中的method属性-->
+            <button type="submit" formmethod="get">GET</button>
+            <!--禁用此按钮-->
+            <button type="submit" disabled>禁用</button>
+            
+        </form>
+    </p>
+</body>
+</html>

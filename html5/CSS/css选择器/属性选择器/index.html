@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* 匹配所有class为wood */
+        [class="wood"] {
+            color: saddlebrown;
+        }
+
+        /* 匹配所有class中wood开头的元素 */
+        [class^="wood"] {
+            background-color: seagreen;
+        }
+        /* 匹配所有class中带wood开头的 li元素 */
+        li[class^="wood"] {
+            border: black 2px solid;
+        }
+
+        /* 匹配所有class中带wood结尾的 li元素 */
+        li[class$="wood"] {
+            border: yellow 2px solid;
+        }
+
+        /* 模糊匹配 water 所有元素*/
+        [class*="water"] {
+            color: blue;
+        }
+
+    </style>
+</head>
+<body>
+    <span class="wood">木</span><br>
+    <span class="water">水</span>
+
+    <p>金<span class="wood">木</span>水火土</p>
+    <p class="wood-fire"><span class="wood">木</span>生火</p>
+
+    <ul>
+        <li class="wood-earth"><span class="wood">木</span>克土</li>
+        <li class="metal-wood">金克<span class="wood">木</span></li>
+        <li class="water-fire"><span class="water">水</span>克火</li>
+        <li class="earth-water">土克<span class="water">水</span></li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* 取消默认的边界 */
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        img{
+            width: 500px;
+            height: 313px;
+        }
+
+        #outer{
+            width: 520px;
+            height: 315px;
+            margin: 500px auto;
+
+            background-color: yellowgreen;
+            padding: 10px 0;
+            /* 开启相对定位 */
+
+            position: relative;
+            /* 裁剪溢出的内容 */
+            overflow: hidden;
+        }
+
+        /* 设置imgList */
+        #imgList{
+            /* 去除项目符号 */
+            list-style: none;
+            /* 设置ul的宽度 */
+            /* width: 1040px; */
+            /* 开启绝对定位 */
+            position: absolute;
+
+            /* 每向左移动520px，就会显示到下一张图片 */
+        }
+        /* 设置图片中的li */
+        #imgList li{
+            /* 设置浮动 */
+            float: left;
+            /* 设置左右外边距 */
+            margin: 0 10px;
+        }
+
+        /* 设置导航按钮 */
+        #navDiv{
+            /* 开启绝对定位 */
+            position: absolute;
+
+            bottom: 20px;
+
+        }
+
+        #navDiv a{
+            float: left;
+            width: 15px;
+            height: 15px;
+            background-color: red;
+
+            margin: 0 5px;
+            /* 设置透明度 */
+            opacity: 0.5;
+            /* 兼容IE8透明 */
+            filter: alpha(opacity=50);
+        }
+
+        /* 设置鼠标移入效果 */
+        #navDiv a:hover{
+            background-color: black;
+        }
+    </style>
+
+    <!-- 引用工具 -->
+
+    <script type="text/javascript" src="../static/js/tools.js"></script>
+
+    <script>
+        window.onload = function(){
+            // 设置imgList的宽度
+            // 获取imgList
+            var imgList = document.getElementById("imgList")
+            // 获取页面中多有img标签
+            var imgArr = document.getElementsByTagName("img");
+            // 设置imgList的宽度
+            imgList.style.width = 520*imgArr.length + "px"
+
+            // 设置导航按钮剧中
+            var navDiv = document.getElementById("navDiv")
+
+            var outer = document.getElementById("outer")
+            // 设置navDiv的left值
+            navDiv.style.left = (outer.offsetWidth - navDiv.offsetWidth)/2 + "PX"
+
+            // 默认显示图片的索引
+            var index = 0;
+
+            // 获取所有的a
+            var allA = document.getElementsByTagName("a")
+
+            // 设置默认选中的效果
+            allA[index].style.backgroundColor = "black"
+
+
+
+            /*
+            
+            点击超链接切换到指定图片
+            */
+
+            // 为所有的超链接绑定单击响应函数
+
+            for(var i=0; i<allA.length; i++){
+
+                allA[i].num = i
+                // 为超链接绑定单击响应函数
+                allA[i].onclick = function(){
+
+                    // 关闭自动切换的定时器
+
+                    clearInterval(timer)
+                    
+                    // 获取超链接的索引，并将其设置为index
+                    index = this.num
+
+                    // 切换图片
+                    // imgList.style.left = -520*index + "px";
+
+                    
+
+                    // 修改正在选中的a
+                    setA()
+
+                    // 使用move函数实行切换
+                    move(imgList, "left", -520*index, 100, function(){
+                        // 动画执行完毕,开始自动切换
+                        autoChange()
+                    })
+
+                }
+            }
+
+            // 自动切换图片
+
+            autoChange()
+
+
+            // 创建一个方法来设置选中的a
+
+            function setA(){
+
+                // 判断等钱索引是否使最后一张图片
+                if(index >= imgArr.length - 1){
+                    // 则将index设置为0；
+                    index = 0;
+
+                    // 此时显示的使最后一张图片，而最后一张图片和第一张使一摸一样
+                    // 通过css将最后一张切换成第一张
+                    imgList.style.left = 0;
+                }
+
+                // 遍历所有的a，并将他们的背景色变为红色
+
+                for(var i=0; i< allA.length; i++){
+                    allA[i].style.backgroundColor = "";
+                }
+
+                // 将选中的a设置为黑色
+
+                allA[index].style.backgroundColor = "black"
+            }
+
+
+            
+
+
+            // 创建一个函数来开启自动切换图片
+
+            var timer
+
+            function autoChange(){
+                // 开启定时器，用来定时切换图片
+
+                timer = setInterval(function(){
+                    // 使索引自增
+
+                    index++
+
+                    index %= imgArr.length;
+
+                    // 执行动画
+
+                    move(imgList, "left", -520*index, 20, function(){
+                        // 修改导航按钮
+                        setA()
+                    })
+                }, 3000)
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <!-- 创建一个外部的div，来作为大的容器 -->
+    <div id="outer">
+        <!-- 创建ul用于防止图片 -->
+        <ul id="imgList">
+            <li>
+                <img src="../static/img/1.png" alt="">
+            </li>
+
+            <li>
+                <img src="../static/img/2.jpg" alt="">
+            </li>
+            <li>
+                <img src="../static/img/3.png" alt="">
+            </li>
+
+            <li>
+                <img src="../static/img/1.png" alt="">
+            </li>
+        </ul>
+        <!-- 创建导航按钮 -->
+        <div id="navDiv">
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+    </div>
+</body>
+</html>

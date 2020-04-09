@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../../static/js/vue/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+
+        <ul>
+            <!-- 
+                从父元素传值给组件：
+                    - 组件定义的时候将变量名称定义给props；props:["product"],
+                    - 再标签中绑定  :product="product"
+
+
+                组件直接修改根元素的值：
+                    - 组件可以直接调用$parent来找到父元素对象,
+                      并且在点击事件直接通过表达式来修改父元素的属性
+                    
+             -->
+
+            <product-com 
+            v-for="product in products" 
+            :product="product"
+            ></product-com>
+            
+        </ul>
+        
+
+        <h3>选中的产品是：{{product_name}}</h3>
+        
+
+    </div>
+
+    <script>
+
+
+
+        Vue.component("product-com", {
+            props:["product"],
+            template: `
+            <li>
+                <h4>产品名称：{{ product.name }}</h4>
+                <h4>产品价格：{{ product.price }}</h4>
+                <button @click="$parent.product_name=product.name">选择</button>
+            </li>
+            `,
+        })
+
+
+
+        var app = new Vue({
+            el: "#app",
+            data: {
+                products: [
+                    {name:"iphone", price:"6000"},
+                    {name:"ipad", price:"7000"},
+                    {name:"mac", price:"16000"},
+                ],
+
+                product_name: ""
+
+            },
+        })
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../../../static/js/vue/vue.js"></script>
+
+    <style>
+        #pane{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="app">
+        <div v-show="isShow" id="pane">
+            hello vue
+        </div>
+        <button @click="showPane">切换显示内容</button>
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el: "#app",
+            data: {
+                isShow: true
+            },
+
+            methods: {
+                showPane: function(e){
+                    console.log(e)
+                    app.isShow = !app.isShow
+                }
+            },
+        })
+    </script>
+    
+</body>
+</html>

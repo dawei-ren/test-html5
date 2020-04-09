@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入animate css动画 -->
+    <link rel="stylesheet" href="../../../static/css/animate.min.css" type="text/css">
+
+    <style>
+        .content{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+
+        /* 
+        设置动画效果
+        
+        .fade-enter-active, .fade-leave-active设置进入，离开时间
+        .fade-enter, .fade-leave-to 设置进入离开效果
+         */
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity .5s;  /*用1秒中时间过度 opacity为透明度*/
+        }
+        .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+            opacity: 0;
+        }
+
+
+        /* 设置滑动进入/退出 */
+        
+        .slide-enter-active, .slide-leave-active {
+            transition: transform 5s;  /*用1秒中时间过度 opacity为透明度*/
+        }
+        .slide-enter, .slide-leave-to /* .fade-leave-active below version 2.1.8 */ {
+            transform: translateX(500px);
+        }
+    </style>
+
+    <script src="../../../static/js/vue/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+
+        <button @click="toggle">切换内容</button>
+
+        <!-- 
+            transaction 
+                - 在下列情形中，可以给任何元素和组件添加进入/离开过渡
+                - 条件渲染 (使用 v-if)
+                - 条件展示 (使用 v-show)
+                name：会跟框架追加的类名一致
+         -->
+        <transition name="fade">
+            <div v-if="isShow" class="content">
+            </div>
+        
+        </transition>
+
+        <h3>自定义过渡的类名（可以允许使用第三方效果）</h3>
+        <transition name="myself" enter-active-class="animated fadeInUp" leave-active-class="animated fadeInDown">
+            <div v-if="isShow" class="content">
+            </div>
+        
+        </transition>
+        
+        
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                isShow: true
+            },
+
+            methods: {
+                toggle: function(){
+                    this.isShow = !this.isShow
+                }
+            },
+        })
+    </script>
+    
+</body>
+</html>
