@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        window.onload = function(){
+            
+
+            // 我们用settimeout来模拟网络请求
+            // 第一次网络请求
+            // setTimeout(()=>{
+            //     // 第一次处理结果
+            //     console.log("hello word");
+            //     console.log("hello word");
+            //     console.log("hello word");
+            //     console.log("hello word");
+            //     console.log("hello word");
+            //     console.log("hello word");
+            //     console.log("hello word");
+
+            //     // 第二次网络请求
+            //     setTimeout(()=>{
+            //         // 第二次处理结果
+            //         console.log("hello vue")
+            //         console.log("hello vue")
+            //         console.log("hello vue")
+            //         console.log("hello vue")
+            //         console.log("hello vue")
+            //         console.log("hello vue")
+            //         console.log("hello vue")
+
+            //         // 第三次网络请求
+            //         setTimeout(()=>{
+            //             // 第三次处理结果
+            //             console.log('hello python')
+            //             console.log('hello python')
+            //             console.log('hello python')
+            //             console.log('hello python')
+            //             console.log('hello python')
+            //             console.log('hello python')
+            //             console.log('hello python')
+            //         }, 2000)
+            //     }, 2000)
+                
+            // }, 2000)
+        };
+
+        /*
+        Promise类
+
+            - promise类是对异步调用的一种封装
+            - 可以以更加优雅的方式处理回调函数
+            
+            
+        Promise.all()
+            - 可以传入多个异步请求，然后统一返回结果
+        
+        这种嵌套的网络请求是很难维护的，但是有了promise
+        */ 
+
+        new Promise((resolve, reject)=>{
+            // 第一次网络请求的代码
+            setTimeout(()=>{
+                const res1 = "hello world promise"
+
+                // 成功的时候
+                resolve(res1)
+                // 失败的时候
+                err = 'error msg'
+                reject(err)
+            }, 2000)
+        }).then((res1)=>{
+            // 第一次拿到结果的处理代码
+            console.log(res1);
+            console.log(res1);
+            console.log(res1);
+            console.log(res1);
+            console.log(res1);
+        
+            return new Promise((resolve, reject)=>{
+                // 第二次网络请求的代码
+                setTimeout(()=>{
+
+                    const res2 = "hello vue promise"
+                    resolve(res2)
+                }, 2000)
+            })
+        }).then((res2)=>{
+            // 第二次拿到结果的处理代码
+            console.log(res2);
+            console.log(res2);
+            console.log(res2);
+            console.log(res2);
+            console.log(res2);
+            
+            
+            return new Promise((resolve, reject)=>{
+                // 第三次网络请求代码
+                setTimeout(()=>{
+
+                    const res3 = "hello python promise"
+                    resolve(res3)
+                }, 2000)
+            })
+        }).then((res3)=>{
+            // 第三次拿到结果处理代码
+            console.log(res3);
+            console.log(res3);
+            console.log(res3);
+            console.log(res3);
+            console.log(res3);
+            
+        }).catch((err)=>{
+            // 处理失败的请求
+            console.log(err);
+            
+        })
+
+        /*
+        
+        传入多个异步请求，统一获取结果
+        
+        */
+
+        Promise.all([
+
+            new Promise((resolve, reject)=>{
+                setTimeout(()=>{
+                    resolve({name:'a', age:18})
+                }, 2000)
+            }),
+
+            new Promise((resolve, reject)=>{
+                setTimeout(()=>{
+                    resolve({name:"b", age: 10})
+                }, 1000)
+            })
+        ]).then(results =>{
+            console.log(results);
+            
+        })
+
+
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
