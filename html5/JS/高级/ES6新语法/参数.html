@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    /*
+    现在可以在定义函数的时候指定参数的默认值了，
+    而不用像以前那样通过逻辑或操作符来达到目的了。
+
+    
+    
+    */
+
+
+    // 默认参数
+
+    function sayHello(name){
+      //传统的指定默认参数的方式
+      var name=name||'dude';
+      console.log('Hello '+name);
+    }
+    //运用ES6的默认参数
+    function sayHello2(name='dude'){
+      console.log(`Hello ${name}`);
+    }
+    sayHello();//输出：Hello dude
+    sayHello('Wayou');//输出：Hello Wayou
+    sayHello2();//输出：Hello dude
+    sayHello2('Wayou');//输出：Hello Wayou
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

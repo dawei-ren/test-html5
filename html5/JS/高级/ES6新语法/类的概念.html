@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+        // ES6 中添加了类的概念，原来如果添加类需要使用构造函数，现在更加简单
+
+        class Animal{
+          constructor(name, age){
+            this.name = name;
+            this.age = age;
+          }
+
+          sayHello(){
+            console.log(this.name + "say Hello!")
+          }
+        }
+
+        let dog = new Animal("大黄", 1);
+        dog.sayHello()
+
+        class Dog extends Animal {
+          constructor(name, age, color){
+            super(name, age);
+            this.color = color;
+            console.log(this.name)
+          }
+
+
+        }
+
+        let littleDog = new Dog("小花", 1, "green")
+        littleDog.sayHello()
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

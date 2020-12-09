@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+
+    /*
+    自动解析数组或对象中的值。
+    比如若一个函数要返回多个值，常规的做法是返回一个对象，
+    将每个值做为这个对象的属性返回。但在ES6中，利用解构这一特性，
+    可以直接返回一个数组，然后数组中的值会自动被解析到对应接收该值的变量中。
+    
+    */
+
+    var [x,y]=getVal(),//函数返回值的解构
+        [name,,age]=['wayou','male','secrect'];//数组解构
+
+    function getVal() {
+        return [ 1, 2 ];
+    }
+
+    console.log('x:'+x+', y:'+y);//输出：x:1, y:2 
+    console.log('name:'+name+', age:'+age);//输出： name:wayou, age:secrect 
+
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
