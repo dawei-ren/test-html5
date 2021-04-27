@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>左侧边栏</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .main {
+      width: 100%;
+      height: 100%;
+      background-color: aqua;
+      position: absolute;
+    }
+
+    .main div {
+      
+      float: left;
+    }
+    .left {
+      width: 100px;
+      height: 100%;
+      background-color: brown;
+      position: fixed;
+    }
+
+    .right {
+      width: 1000px;
+      height: 500px;
+      background-color: blue;
+      position: absolute;
+      margin-left: 100px;
+    }
+
+    .right-inner {
+      width: 100px;
+      height: 100px;
+      background-color: rebeccapurple;
+      margin-top: 20px;
+      margin-left: 20px;
+    }
+
+  </style>
+
+</head>
+<body>
+  <div class="main">
+    <div class="left">
+
+    </div>
+    <div class="right">
+      <div class="right-inner"></div>
+    </div>
+
+  </div>
+  
+  
+</body>
+</html>

@@ -159,3 +159,13 @@ nohup.out
 db.sqlite3
 accounts/migrations/
 core/migrations/
+
+.DS_Store
+
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
