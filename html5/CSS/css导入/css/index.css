@@ -1,0 +1,9 @@
+/* 此处导入其他css文件 */
+@import url(base.css);
+
+.a {
+  width: 100px;
+  height: 100px;
+  /* 使用变量 */
+  background-color: var(--main-color);
+}

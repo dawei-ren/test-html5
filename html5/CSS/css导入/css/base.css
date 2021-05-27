@@ -1,0 +1,9 @@
+:root {
+  --main-color: #649AE8;
+}
+
+.b {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+}
