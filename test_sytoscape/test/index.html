@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!-- This code is for demonstration purposes only.  You should not hotlink to Github, Rawgit, or files from the Cytoscape.js documentation in your production apps. -->
+<html>
+  <head>
+  <link href="style.css" rel="stylesheet" />
+  <meta charset=utf-8 />
+  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
+  <title>Animated BFS</title>
+  <script src="../js/cytoscape.min.js"></script>
+  <script src="../js/jquery-3.4.1.min.js"></script>
+  </head>
+  <body>
+    <div>
+      <div id="cy"></div>
+      <textarea id="fleak-query"></textarea>
+      <div class="empty"></div>
+    </div>
+  
+  <button id="add-node">添加节点</button>
+  <button id="add-edge">添加边</button>
+  <button id="delete">删除</button>
+  <button id="show-fleak-query">show query</button></button>
+  <br>
+  
+  <!-- Load application code at the end to ensure DOM is loaded -->
+
+
+
+  <!-- 创建node输入框 -->
+  <div class="dialog">
+    <div id="create-node" title="Create a new node" >
+      <div>
+        <label >id</label>
+        <input type="text" id="node-id">
+      </div>
+      <div>
+        <label >commandName</label>
+        <input type="text" id="command-name" list="commandlist">
+        <datalist id="commandlist">
+          <option>kafkasource</option>
+          <option>kafkasink</option>
+        </datalist>
+      </div>
+      <div>
+        <label>jarUrl</label>
+        <input type="text" id="jar-url">
+      </div>
+      <div>
+        <label>rawArg</label>
+        <input type="text" id="raw-arg">
+      </div>
+      <button id="create-node-yes">yes</button>
+      <button id="create-node-no">no</button>
+    </div>
+  
+  
+    <!-- 创建edge输入框 -->
+    <div id="create-edge">
+      <div>
+        <label >name</label>
+        <input type="text" id="edge-name">
+      </div>
+      <div>
+        <label >from</label>
+        <input type="text" id="edge-from">
+      </div>
+      <div>
+        <label>to</label>
+        <input type="text" id="edge-to">
+      </div>
+      <button id="create-edge-yes">yes</button>
+      <button id="create-edge-no">no</button>
+    </div>
+  </div>
+
+
+
+  <script src="code.js"></script>
+  </body>
+</html>

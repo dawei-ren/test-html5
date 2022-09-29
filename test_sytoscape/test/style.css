@@ -1,0 +1,38 @@
+body { 
+  font: 14px helvetica neue, helvetica, arial, sans-serif;
+}
+
+#cy {
+  float: left;
+  height: 500px;
+  width: 1000px;
+  /* position: absolute; */
+  /* left: 0; */
+  /* top: 0; */
+  border: 2px solid gray;
+}
+
+#add-node {
+  margin-top: 20px;
+}
+
+#fleak-query {
+  float: left;
+  margin-left: 20px;
+  height: 500px;
+  width: 300px;
+  border: 2px solid gray;
+}
+
+.empty { clear: both}
+
+label{
+  display: inline-block;
+  min-width: 100px;/*或者 width: 100px;*/
+}
+
+.dialog {
+  margin-top: 5px;
+}
+
+

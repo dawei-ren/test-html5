@@ -1,0 +1,27 @@
+{
+  "nodes": [
+    {
+      "nodeId": "1",
+      "node": {
+        "commandName": "kafkasource",
+        "jarUrl": null,
+        "rawArg": "{\"groupId\":\"springboot-consumer02\",\"topic\":\"word-count\",\"cluster\":\"192.168.0.104:9092\",\"consumerOffsets\":\"LATEST\",\"encodingConfig\":{\"encodingType\":\"JSON_OBJECT\"}}"
+      }
+    },
+    {
+      "nodeId": "2",
+      "node": {
+        "commandName": "kafkasink",
+        "jarUrl": null,
+        "rawArg": "{\"topic\":\"test_topic\",\"cluster\":\"192.168.0.104:9092\",\"encodingConfig\":{\"encodingType\":\"JSON_OBJECT\"}}"
+      }
+    }
+  ],
+  "topology": [
+    {
+      "edgeName": "1_2",
+      "from": "1",
+      "to": "2"
+    }
+  ]
+}
