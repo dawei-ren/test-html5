@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../static/js/jsplumb.min.js"></script>
+  <style>
+    #diagramContainer {
+      padding: 20px;
+      width: 80%;
+      height: 400px;
+      border: 1px solid gray;
+    }
+    .item {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border: 1px solid blue;
+    }
+  </style>
+  
+</head>
+<body>
+  <div id="diagramContainer">
+    <div id="item_left" class="item"></div>
+    <div id="item_right" class="item" style="left:300px;"></div>
+  </div>
+
+  <script>
+    /* global jsPlumb */
+    jsPlumb.ready(()=> {
+      jsPlumb.setContainer('diagramContainer')
+
+      // 在连线样式相同的情况下，可以将配置抽离出来，作为一个单独的变量，作为connect的第二个参数传入
+      var common = {
+        isSource: true,
+        isTarget: true,
+        connector: 'Straight',
+        endpoint: 'Dot',
+        paintStyle: {
+          fill: 'white',
+          outlineStroke: 'blue',
+          strokeWidth: 3
+        },
+        hoverPaintStyle: {
+          outlineStroke: 'lightblue'
+        },
+        connectorStyle: {
+          outlineStroke: 'green',
+          strokeWidth: 1
+        },
+        connectorHoverStyle: {
+          strokeWidth: 2
+        },
+
+        maxConnections: -1
+      }
+
+
+      
+
+      // 配置节点可以拖动
+      jsPlumb.draggable('item_left')
+      jsPlumb.draggable('item_right')
+
+
+      jsPlumb.addEndpoint('item_left', {
+        anchors: ['Right', 'Left']
+      }, common)
+
+      // 增加端点
+      jsPlumb.addEndpoint('item_right', {
+        anchors: ['Left']
+      }, common)
+
+      
+
+
+
+      
+
+      
+
+    })
+  </script>
+  
+</body>
+</html>
