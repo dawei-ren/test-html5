@@ -13,45 +13,37 @@
 <body>
   <div id="mountNode"></div>
   <button id="create-node">创建节点</button>
-  <button id="delete-node">删除节点</button>
-
+  <button id="delete-node">删除</button>
   <button id="create-edge">创建边</button>
-  <button id="delete-edge">删除边</button>
-
-
-
-  
   <button id="to-json">json数据</button>
 
-
-
-<!-- 创建node输入框 -->
-<div class="dialog">
-  <div id="create-node-input" title="Create a new node" >
-    <div>
-      <label >id</label>
-      <input type="text" id="node-id">
+  <!-- 创建node输入框 -->
+  <div class="dialog">
+    <div id="create-node-input" title="Create a new node" >
+      <div>
+        <label >id</label>
+        <input type="text" id="node-id">
+      </div>
+      <div>
+        <label >commandName</label>
+        <input type="text" id="command-name" list="commandlist">
+        <datalist id="commandlist">
+          <option>kafkasource</option>
+          <option>kafkasink</option>
+        </datalist>
+      </div>
+      <div>
+        <label>jarUrl</label>
+        <input type="text" id="jar-url">
+      </div>
+      <div>
+        <label>rawArg</label>
+        <input type="text" id="raw-arg">
+      </div>
+      <button id="create-node-yes">yes</button>
+      <button id="create-node-no">no</button>
     </div>
-    <div>
-      <label >commandName</label>
-      <input type="text" id="command-name" list="commandlist">
-      <datalist id="commandlist">
-        <option>kafkasource</option>
-        <option>kafkasink</option>
-      </datalist>
-    </div>
-    <div>
-      <label>jarUrl</label>
-      <input type="text" id="jar-url">
-    </div>
-    <div>
-      <label>rawArg</label>
-      <input type="text" id="raw-arg">
-    </div>
-    <button id="create-node-yes">yes</button>
-    <button id="create-node-no">no</button>
   </div>
-</div>
 
 
   <textarea id="fleak-query"></textarea>

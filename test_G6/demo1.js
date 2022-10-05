@@ -76,17 +76,16 @@ $('#create-node').click(() => {
 $('#delete-node').click(() => {
   graph.findAllByState('node', 'selected').forEach(each => {
     // console.log(each);
-    graph.removeItem(each, true)
-  })
-})
-
-
-$('#delete-edge').click(() => {
+    graph.removeItem(each, true);
+  });
   graph.findAllByState('edge', 'selected').forEach(each => {
     // console.log(each);
     graph.removeItem(each, true)
   })
 })
+
+
+
 
 $('#create-edge').click(() => {
   $("#create-node-input").hide();
@@ -216,9 +215,7 @@ G6.registerBehavior('click-add-edge', {
   },
 });
 
-G6.registerEdge(
-  'custom-edge',
-  {
+G6.registerEdge('custom-edge',{
     // 响应状态变化
     setState(name, value, item) {
       const group = item.getContainer();
