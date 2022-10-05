@@ -1,0 +1,24 @@
+#fleak-query {
+  width: 500px;
+  height: 200px;
+}
+
+
+/* .empty { clear: both} */
+
+label{
+  display: inline-block;
+  min-width: 100px;/*或者 width: 100px;*/
+}
+
+.dialog {
+  margin-top: 5px;
+}
+
+.btn-select {
+  background-color: blue;
+}
+
+.btn-unselect {
+  background-color: aliceblue;
+}
